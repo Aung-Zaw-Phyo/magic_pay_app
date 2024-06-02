@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:magic_pay_app/screens/Login.dart';
+import 'package:magic_pay_app/screens/Register.dart';
 import 'package:magic_pay_app/screens/tabs.dart';
 
 void main() {
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
           titleSmall: GoogleFonts.lato(),
         ),
       ),
-      home: const TabsScreen(),
+      home: const LoginScreen(),
     );
   }
 }
