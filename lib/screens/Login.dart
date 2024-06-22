@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,6 +22,15 @@ class _LoginScreenState extends State<LoginScreen> {
       print(_enteredPhone);
       print(_enteredPassword);
     }
+  }
+
+  void _register() async {
+    // Obtain shared preferences.
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('action', 'Start');
+    // final String? action = prefs.getString('action');
+    // ScaffoldMessenger.of(context)
+    //     .showSnackBar(SnackBar(content: Text(action != null ? action : 'hi')));
   }
 
   @override
@@ -104,9 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: GestureDetector(
-                        onTap: () {
-                          print("Register ********************");
-                        },
+                        onTap: _register,
                         child: Text(
                           'Register',
                           textAlign: TextAlign.left,

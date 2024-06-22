@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           titleSmall: GoogleFonts.lato(),
         ),
       ),
-      home: const LoginScreen(),
+      home: const TabsScreen(),
     );
   }
 }

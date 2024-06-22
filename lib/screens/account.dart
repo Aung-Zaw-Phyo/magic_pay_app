@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
+
+  void _logout() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('action');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +103,7 @@ class AccountScreen extends StatelessWidget {
                 color: const Color.fromARGB(48, 0, 0, 0),
               ),
               ListTile(
-                onTap: () {},
+                onTap: _logout,
                 leading: const Icon(Icons.logout),
                 title: const Text('Logout'),
                 trailing: const Icon(
