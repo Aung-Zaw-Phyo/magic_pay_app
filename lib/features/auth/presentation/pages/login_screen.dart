@@ -23,19 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
   var _enteredPhone = '';
   var _enteredPassword = '';
 
-  // void _submit() {
-  //   final isValid = _form.currentState!.validate();
-  //   if (isValid) {
-  //     _form.currentState!.save();
-  //     BlocProvider.of<AuthActionBloc>(context).add(
-  //       AuthLogin(
-  //         phone: _enteredPhone,
-  //         password: _enteredPassword,
-  //       ),
-  //     );
-  //   }
-  // }
-
   void _register() async {
     Navigator.pushNamed(context, '/register');
   }
@@ -67,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 6),
                         const Text('Fill the form to login'),
                         TextFormField(
+                          key: const Key('phone_field'),
                           decoration: const InputDecoration(
                             label: Text('Phone'),
                           ),
@@ -82,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                         TextFormField(
+                          key: const Key('password_field'),
                           decoration: const InputDecoration(
                             label: Text('Password'),
                           ),

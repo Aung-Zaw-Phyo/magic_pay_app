@@ -71,6 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 6),
                         const Text('Fill the form to register'),
                         TextFormField(
+                          key: const Key('name_field'),
                           decoration: const InputDecoration(
                             label: Text('Name'),
                           ),
@@ -86,6 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           },
                         ),
                         TextFormField(
+                          key: const Key('email_field'),
                           decoration: const InputDecoration(
                             label: Text('Email'),
                           ),
@@ -103,6 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           },
                         ),
                         TextFormField(
+                          key: const Key('phone_field'),
                           decoration: const InputDecoration(
                             label: Text('Phone'),
                           ),
@@ -118,6 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           },
                         ),
                         TextFormField(
+                          key: const Key('password_field'),
                           decoration: const InputDecoration(
                             label: Text('Password'),
                           ),
