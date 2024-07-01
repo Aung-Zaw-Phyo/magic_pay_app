@@ -9,7 +9,6 @@ import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action
 import 'package:magic_pay_app/features/auth/presentation/bloc/status/auth_status_bloc.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/status/auth_status_event.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/status/auth_status_state.dart';
-import 'package:magic_pay_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:magic_pay_app/features/auth/presentation/pages/register_screen.dart';
 import 'package:magic_pay_app/injection_container.dart';
 import 'package:mocktail/mocktail.dart';
