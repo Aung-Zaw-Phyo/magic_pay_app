@@ -23,6 +23,7 @@ class WalletScreen extends StatelessWidget {
 
       if (state is ProfileLoaded) {
         return Card(
+          key: const Key('wallet_data'),
           color: Theme.of(context).colorScheme.primary,
           child: Container(
             decoration: const BoxDecoration(

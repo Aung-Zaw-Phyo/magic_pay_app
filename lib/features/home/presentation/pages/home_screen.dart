@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
 
       if (state is ProfileLoaded) {
         return Center(
+          key: const Key('profile_data'),
           child: SingleChildScrollView(
             child: Column(
               children: [
