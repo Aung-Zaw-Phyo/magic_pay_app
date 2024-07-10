@@ -17,6 +17,12 @@ class ResponseData extends Equatable {
         data: json['data'],
       );
 
+  Map<String, dynamic> toJson() => {
+        "result": result,
+        "message": message,
+        "data": data,
+      };
+
   @override
   List<Object> get props => [
         result,

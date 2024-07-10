@@ -8,6 +8,13 @@ import 'package:magic_pay_app/features/auth/domain/usecases/logout.dart';
 import 'package:magic_pay_app/features/auth/domain/usecases/register.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action_bloc.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/status/auth_status_bloc.dart';
+import 'package:magic_pay_app/features/home/data/data_sources/remote_data_source.dart';
+import 'package:magic_pay_app/features/home/data/repositories/home_repository_impl.dart';
+import 'package:magic_pay_app/features/home/domain/repositories/home_repository.dart';
+import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart';
+import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -21,20 +28,31 @@ void setupLocator() async {
     ),
   );
   locator.registerFactory<AuthStatusBloc>(() => AuthStatusBloc());
+  locator.registerFactory<ProfileBloc>(() => ProfileBloc(locator()));
+  locator
+      .registerFactory<UpdatePasswordBloc>(() => UpdatePasswordBloc(locator()));
 
   // usecase
   locator.registerLazySingleton<LoginUseCase>(() => LoginUseCase(locator()));
   locator.registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(locator()));
   locator
       .registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(locator()));
+  locator.registerLazySingleton<GetProfileUseCase>(
+      () => GetProfileUseCase(locator()));
+  locator.registerLazySingleton<UpdatePasswordUseCase>(
+      () => UpdatePasswordUseCase(locator()));
 
   // repository
   locator.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(locator()));
+  locator.registerLazySingleton<HomeRepository>(
+      () => HomeRepositoryImpl(locator()));
 
   // datasource
   locator.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<HomeRemoteDataSource>(
+      () => HomeRemoteDataSourceImpl(locator()));
 
   // external
 

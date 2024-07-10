@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:magic_pay_app/screens/account.dart';
-import 'package:magic_pay_app/screens/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_event.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/account_screen.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/home_screen.dart';
 import 'package:magic_pay_app/screens/notification.dart';
-import 'package:magic_pay_app/screens/wallet.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/wallet_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -20,6 +23,12 @@ class _TabsScreenState extends State<TabsScreen> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    BlocProvider.of<ProfileBloc>(context).add(const GetProfile());
+    super.initState();
   }
 
   @override

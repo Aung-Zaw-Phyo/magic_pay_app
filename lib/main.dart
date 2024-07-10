@@ -8,8 +8,10 @@ import 'package:magic_pay_app/features/auth/presentation/bloc/status/auth_status
 import 'package:magic_pay_app/features/auth/presentation/bloc/status/auth_status_state.dart';
 import 'package:magic_pay_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:magic_pay_app/features/auth/presentation/pages/splash_screen.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_bloc.dart';
 import 'package:magic_pay_app/injection_container.dart';
-import 'package:magic_pay_app/screens/tabs.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthStatusBloc>(create: (_) => locator<AuthStatusBloc>()),
+        BlocProvider<ProfileBloc>(create: (_) => locator<ProfileBloc>()),
+        BlocProvider<UpdatePasswordBloc>(
+            create: (_) => locator<UpdatePasswordBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

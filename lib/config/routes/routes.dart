@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magic_pay_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:magic_pay_app/features/auth/presentation/pages/register_screen.dart';
-import 'package:magic_pay_app/screens/account.dart';
-import 'package:magic_pay_app/screens/tabs.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/account_screen.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
