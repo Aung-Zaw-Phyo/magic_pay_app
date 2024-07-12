@@ -25,6 +25,7 @@ class AccountScreen extends StatelessWidget {
 
         if (state is ProfileLoaded) {
           return Column(
+            key: const Key('account_data'),
             children: [
               Container(
                 padding: const EdgeInsets.all(12),
