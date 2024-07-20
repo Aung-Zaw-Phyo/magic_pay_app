@@ -87,7 +87,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               bottom: 8,
                             ),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).pushNamed(
+                                  '/notification_detail',
+                                  arguments: notification.id,
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.all(8),
                                 child: Column(

@@ -18,7 +18,9 @@ import 'package:magic_pay_app/features/home/presentation/bloc/update_password/up
 import 'package:magic_pay_app/features/notification/data/data_sources/remote_data_source.dart';
 import 'package:magic_pay_app/features/notification/data/repositories/notification_repository_impl.dart';
 import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart';
+import 'package:magic_pay_app/features/notification/domain/usecases/get_notification_detail.dart';
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart';
+import 'package:magic_pay_app/features/notification/presentation/bloc/notification_detail/notification_detail_bloc.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notifications/notifications_bloc.dart';
 
 final locator = GetIt.instance;
@@ -39,6 +41,8 @@ void setupLocator() async {
 
   locator
       .registerFactory<NotificationsBloc>(() => NotificationsBloc(locator()));
+  locator.registerFactory<NotificationDetailBloc>(
+      () => NotificationDetailBloc(locator()));
 
   // usecase
   locator.registerLazySingleton<LoginUseCase>(() => LoginUseCase(locator()));
@@ -52,6 +56,8 @@ void setupLocator() async {
 
   locator.registerLazySingleton<GetNotificationsUseCase>(
       () => GetNotificationsUseCase(locator()));
+  locator.registerLazySingleton<GetNotificationDetailUseCase>(
+      () => GetNotificationDetailUseCase(locator()));
 
   // repository
   locator.registerLazySingleton<AuthRepository>(

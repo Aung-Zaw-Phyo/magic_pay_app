@@ -3,6 +3,7 @@ import 'package:magic_pay_app/features/auth/presentation/pages/login_screen.dart
 import 'package:magic_pay_app/features/auth/presentation/pages/register_screen.dart';
 import 'package:magic_pay_app/features/home/presentation/pages/account_screen.dart';
 import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart';
+import 'package:magic_pay_app/features/notification/presentation/pages/notification_detail_screen.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
 
 class AppRoutes {
@@ -17,11 +18,17 @@ class AppRoutes {
       case '/register':
         return _materialRoute(const RegisterScreen());
 
-      case '/account':
+      case '/profile':
         return _materialRoute(const AccountScreen());
 
       case '/notification':
         return _materialRoute(const NotificationScreen());
+
+      case '/notification_detail':
+        final notificationId = settings.arguments as String;
+        return _materialRoute(
+          NotificationDetailScreen(notificationId: notificationId),
+        );
 
       default:
         return _materialRoute(const TabsScreen());

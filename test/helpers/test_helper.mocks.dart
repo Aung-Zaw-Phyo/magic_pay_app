@@ -40,10 +40,12 @@ import 'package:magic_pay_app/features/notification/domain/entities/notification
     as _i14;
 import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart'
     as _i12;
+import 'package:magic_pay_app/features/notification/domain/usecases/get_notification_detail.dart'
+    as _i25;
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart'
     as _i24;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:shared_preferences/shared_preferences.dart' as _i25;
+import 'package:shared_preferences/shared_preferences.dart' as _i26;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -685,10 +687,39 @@ class MockGetNotificationsUseCase extends _i1.Mock
       ) as _i8.Future<_i2.Either<_i9.Failure, _i13.NotificationDataEntity>>);
 }
 
+/// A class which mocks [GetNotificationDetailUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetNotificationDetailUseCase extends _i1.Mock
+    implements _i25.GetNotificationDetailUseCase {
+  MockGetNotificationDetailUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i8.Future<_i2.Either<_i9.Failure, _i14.NotificationDetailEntity>> execute(
+          String? notificationId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [notificationId],
+        ),
+        returnValue: _i8.Future<
+                _i2.Either<_i9.Failure, _i14.NotificationDetailEntity>>.value(
+            _FakeEither_0<_i9.Failure, _i14.NotificationDetailEntity>(
+          this,
+          Invocation.method(
+            #execute,
+            [notificationId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i9.Failure, _i14.NotificationDetailEntity>>);
+}
+
 /// A class which mocks [SharedPreferences].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedPreferences extends _i1.Mock implements _i25.SharedPreferences {
+class MockSharedPreferences extends _i1.Mock implements _i26.SharedPreferences {
   MockSharedPreferences() {
     _i1.throwOnMissingStub(this);
   }
