@@ -44,6 +44,7 @@ class _NotificationDetailScreenState extends State<NotificationDetailScreen> {
           if (state is NotificationDetailLoaded) {
             final notification = state.notification;
             return Center(
+              key: const Key('notification_detail'),
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(16),

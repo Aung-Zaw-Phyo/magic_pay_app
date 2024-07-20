@@ -67,6 +67,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
           if (state is NotificationsLoaded) {
             return Padding(
+              key: const Key('notifications'),
               padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
