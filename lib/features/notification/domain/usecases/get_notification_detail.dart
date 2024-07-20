@@ -8,7 +8,7 @@ class GetNotificationDetailUseCase {
   const GetNotificationDetailUseCase(this._notificationRepository);
 
   Future<Either<Failure, NotificationDetailEntity>> execute(
-      String notificationId) {
+      String notificationId) async {
     return _notificationRepository.getNotificationDetail(notificationId);
   }
 }

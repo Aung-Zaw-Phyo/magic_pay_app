@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_state.dart';
-import 'package:magic_pay_app/screens/notification.dart';
+import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
 import 'package:magic_pay_app/screens/receive_qr.dart';
 import 'package:magic_pay_app/screens/scan.dart';
 import 'package:magic_pay_app/screens/transaction.dart';

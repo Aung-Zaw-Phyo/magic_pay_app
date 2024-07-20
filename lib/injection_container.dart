@@ -15,6 +15,11 @@ import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart';
 import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_bloc.dart';
+import 'package:magic_pay_app/features/notification/data/data_sources/remote_data_source.dart';
+import 'package:magic_pay_app/features/notification/data/repositories/notification_repository_impl.dart';
+import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart';
+import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart';
+import 'package:magic_pay_app/features/notification/presentation/bloc/notifications/notifications_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -32,6 +37,9 @@ void setupLocator() async {
   locator
       .registerFactory<UpdatePasswordBloc>(() => UpdatePasswordBloc(locator()));
 
+  locator
+      .registerFactory<NotificationsBloc>(() => NotificationsBloc(locator()));
+
   // usecase
   locator.registerLazySingleton<LoginUseCase>(() => LoginUseCase(locator()));
   locator.registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(locator()));
@@ -42,17 +50,24 @@ void setupLocator() async {
   locator.registerLazySingleton<UpdatePasswordUseCase>(
       () => UpdatePasswordUseCase(locator()));
 
+  locator.registerLazySingleton<GetNotificationsUseCase>(
+      () => GetNotificationsUseCase(locator()));
+
   // repository
   locator.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(locator()));
   locator.registerLazySingleton<HomeRepository>(
       () => HomeRepositoryImpl(locator()));
+  locator.registerLazySingleton<NotificationRepository>(
+      () => NotificationRepositoryImpl(locator()));
 
   // datasource
   locator.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(locator()));
   locator.registerLazySingleton<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<NotificationRemoteDataSource>(
+      () => NotificationRemoteDataSourceImpl(locator()));
 
   // external
 

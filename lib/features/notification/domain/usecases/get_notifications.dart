@@ -7,7 +7,7 @@ class GetNotificationsUseCase {
   final NotificationRepository _notificationRepository;
   const GetNotificationsUseCase(this._notificationRepository);
 
-  Future<Either<Failure, NotificationDataEntity>> execute(int page) {
+  Future<Either<Failure, NotificationDataEntity>> execute(int page) async {
     return _notificationRepository.getNotifications(page);
   }
 }

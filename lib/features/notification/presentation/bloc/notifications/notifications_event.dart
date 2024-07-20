@@ -14,3 +14,10 @@ class GetNotifications extends NotificationsEvent {
   @override
   List<Object> get props => [page];
 }
+
+class NotificationsRefresh extends NotificationsEvent {
+  const NotificationsRefresh();
+
+  @override
+  List<Object> get props => [];
+}

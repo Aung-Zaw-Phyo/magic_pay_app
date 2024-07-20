@@ -4,7 +4,6 @@ import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bl
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_event.dart';
 import 'package:magic_pay_app/features/home/presentation/pages/account_screen.dart';
 import 'package:magic_pay_app/features/home/presentation/pages/home_screen.dart';
-import 'package:magic_pay_app/screens/notification.dart';
 import 'package:magic_pay_app/features/home/presentation/pages/wallet_screen.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -50,11 +49,7 @@ class _TabsScreenState extends State<TabsScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const NotificationScreen(),
-                ),
-              );
+              Navigator.pushNamed(context, '/notification');
             },
             icon: const Icon(Icons.notifications),
           ),

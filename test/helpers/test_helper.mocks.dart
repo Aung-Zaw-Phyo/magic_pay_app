@@ -40,8 +40,10 @@ import 'package:magic_pay_app/features/notification/domain/entities/notification
     as _i14;
 import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart'
     as _i12;
+import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart'
+    as _i24;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:shared_preferences/shared_preferences.dart' as _i24;
+import 'package:shared_preferences/shared_preferences.dart' as _i25;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -654,10 +656,39 @@ class MockUpdatePasswordUseCase extends _i1.Mock
       ) as _i8.Future<_i2.Either<_i9.Failure, _i3.ResponseData>>);
 }
 
+/// A class which mocks [GetNotificationsUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetNotificationsUseCase extends _i1.Mock
+    implements _i24.GetNotificationsUseCase {
+  MockGetNotificationsUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i8.Future<_i2.Either<_i9.Failure, _i13.NotificationDataEntity>> execute(
+          int? page) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [page],
+        ),
+        returnValue: _i8
+            .Future<_i2.Either<_i9.Failure, _i13.NotificationDataEntity>>.value(
+            _FakeEither_0<_i9.Failure, _i13.NotificationDataEntity>(
+          this,
+          Invocation.method(
+            #execute,
+            [page],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i9.Failure, _i13.NotificationDataEntity>>);
+}
+
 /// A class which mocks [SharedPreferences].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedPreferences extends _i1.Mock implements _i24.SharedPreferences {
+class MockSharedPreferences extends _i1.Mock implements _i25.SharedPreferences {
   MockSharedPreferences() {
     _i1.throwOnMissingStub(this);
   }
