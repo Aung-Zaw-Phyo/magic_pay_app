@@ -22,6 +22,13 @@ import 'package:magic_pay_app/features/notification/domain/usecases/get_notifica
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notification_detail/notification_detail_bloc.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notifications/notifications_bloc.dart';
+import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart';
+import 'package:magic_pay_app/features/transaction/data/repositories/transaction_repository_impl.dart';
+import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart';
+import 'package:magic_pay_app/features/transaction/domain/usecases/get_transaction_detail.dart';
+import 'package:magic_pay_app/features/transaction/domain/usecases/get_transactions.dart';
+import 'package:magic_pay_app/features/transaction/presentation/bloc/transaction_detail/transaction_detail_bloc.dart';
+import 'package:magic_pay_app/features/transaction/presentation/bloc/transactions/transactions_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -44,6 +51,10 @@ void setupLocator() async {
   locator.registerFactory<NotificationDetailBloc>(
       () => NotificationDetailBloc(locator()));
 
+  locator.registerFactory<TransactionsBloc>(() => TransactionsBloc(locator()));
+  locator.registerFactory<TransactionDetailBloc>(
+      () => TransactionDetailBloc(locator()));
+
   // usecase
   locator.registerLazySingleton<LoginUseCase>(() => LoginUseCase(locator()));
   locator.registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(locator()));
@@ -59,6 +70,11 @@ void setupLocator() async {
   locator.registerLazySingleton<GetNotificationDetailUseCase>(
       () => GetNotificationDetailUseCase(locator()));
 
+  locator.registerLazySingleton<GetTransactionsUseCase>(
+      () => GetTransactionsUseCase(locator()));
+  locator.registerLazySingleton<GetTransactionDetailUseCase>(
+      () => GetTransactionDetailUseCase(locator()));
+
   // repository
   locator.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(locator()));
@@ -66,6 +82,8 @@ void setupLocator() async {
       () => HomeRepositoryImpl(locator()));
   locator.registerLazySingleton<NotificationRepository>(
       () => NotificationRepositoryImpl(locator()));
+  locator.registerLazySingleton<TransactionRepository>(
+      () => TransactionRepositoryImpl(locator()));
 
   // datasource
   locator.registerLazySingleton<AuthRemoteDataSource>(
@@ -74,6 +92,8 @@ void setupLocator() async {
       () => HomeRemoteDataSourceImpl(locator()));
   locator.registerLazySingleton<NotificationRemoteDataSource>(
       () => NotificationRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<TransactionRemoteDataSource>(
+      () => TransactionRemoteDataSourceImpl(locator()));
 
   // external
 

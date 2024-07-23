@@ -17,7 +17,4 @@ class GetNotifications extends NotificationsEvent {
 
 class NotificationsRefresh extends NotificationsEvent {
   const NotificationsRefresh();
-
-  @override
-  List<Object> get props => [];
 }

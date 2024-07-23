@@ -5,6 +5,7 @@ import 'package:magic_pay_app/features/home/presentation/pages/account_screen.da
 import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_detail_screen.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
+import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_detail_screen.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
@@ -28,6 +29,12 @@ class AppRoutes {
         final notificationId = settings.arguments as String;
         return _materialRoute(
           NotificationDetailScreen(notificationId: notificationId),
+        );
+
+      case '/transaction_detail':
+        final transactionId = settings.arguments as String;
+        return _materialRoute(
+          TransactionDetailScreen(transactionId: transactionId),
         );
 
       default:

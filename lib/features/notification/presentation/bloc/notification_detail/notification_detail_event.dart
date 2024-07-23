@@ -12,5 +12,5 @@ class GetNotificationDetail extends NotificationDetailEvent {
   const GetNotificationDetail(this.notificationId);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [notificationId];
 }

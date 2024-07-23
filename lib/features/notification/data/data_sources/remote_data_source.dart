@@ -48,13 +48,14 @@ class NotificationRemoteDataSourceImpl extends NotificationRemoteDataSource {
     _dio.options.headers['Authorization'] = 'Bearer $token';
     final response = await _dio.get('$baseUrl/notification/$notificationId');
     if (response.statusCode == 200) {
+      final param = response.data['data']['deep_link']['parameter'];
       final notificationDetail = NotificationDetailModel(
         title: response.data['data']['title'],
         message: response.data['data']['message'],
         dateTime: response.data['data']['date_time'],
         deepLink: DeepLinkModel(
           target: response.data['data']['deep_link']['target'],
-          parameter: response.data['data']['deep_link']['parameter'],
+          parameter: param != null ? param['trx_id'] : null,
         ),
       );
 
