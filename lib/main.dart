@@ -14,6 +14,8 @@ import 'package:magic_pay_app/features/notification/presentation/bloc/notificati
 import 'package:magic_pay_app/features/notification/presentation/bloc/notifications/notifications_bloc.dart';
 import 'package:magic_pay_app/features/transaction/presentation/bloc/transaction_detail/transaction_detail_bloc.dart';
 import 'package:magic_pay_app/features/transaction/presentation/bloc/transactions/transactions_bloc.dart';
+import 'package:magic_pay_app/features/transfer/presentation/bloc/transfer_complete/transfer_complete_bloc.dart';
+import 'package:magic_pay_app/features/transfer/presentation/bloc/transfer_confirm/transfer_confirm_bloc.dart';
 import 'package:magic_pay_app/injection_container.dart';
 import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart';
 
@@ -42,6 +44,10 @@ class MyApp extends StatelessWidget {
             create: (_) => locator<TransactionsBloc>()),
         BlocProvider<TransactionDetailBloc>(
             create: (_) => locator<TransactionDetailBloc>()),
+        BlocProvider<TransferConfirmBloc>(
+            create: (_) => locator<TransferConfirmBloc>()),
+        BlocProvider<TransferCompleteBloc>(
+            create: (_) => locator<TransferCompleteBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

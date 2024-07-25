@@ -6,6 +6,8 @@ import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart'
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_detail_screen.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_detail_screen.dart';
+import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_confirm_screen.dart';
+import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_screen.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
@@ -36,6 +38,12 @@ class AppRoutes {
         return _materialRoute(
           TransactionDetailScreen(transactionId: transactionId),
         );
+
+      case '/transfer':
+        return _materialRoute(const TransferScreen());
+
+      case '/transfer_confirm':
+        return _materialRoute(const TransferConfirmScreen());
 
       default:
         return _materialRoute(const TabsScreen());

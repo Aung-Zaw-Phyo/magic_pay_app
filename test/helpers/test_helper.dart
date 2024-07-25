@@ -16,6 +16,10 @@ import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data
 import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart';
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transaction_detail.dart';
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transactions.dart';
+import 'package:magic_pay_app/features/transfer/data/data_sources/remote_data_source.dart';
+import 'package:magic_pay_app/features/transfer/domain/repositories/transfer_repository.dart';
+import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_complete.dart';
+import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_confirm.dart';
 import 'package:mockito/annotations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,12 +30,14 @@ import 'package:shared_preferences/shared_preferences.dart';
     HomeRepository,
     NotificationRepository,
     TransactionRepository,
+    TransferRepository,
 
     // DataSource
     AuthRemoteDataSource,
     HomeRemoteDataSource,
     NotificationRemoteDataSource,
     TransactionRemoteDataSource,
+    TransferRemoteDataSource,
 
     // UseCases
     LoginUseCase,
@@ -43,6 +49,8 @@ import 'package:shared_preferences/shared_preferences.dart';
     GetNotificationDetailUseCase,
     GetTransactionsUseCase,
     GetTransactionDetailUseCase,
+    TransferConfirmUseCase,
+    TransferCompleteUseCase,
 
     // Others
     SharedPreferences,

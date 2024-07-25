@@ -6,7 +6,7 @@ import 'package:magic_pay_app/features/notification/presentation/pages/notificat
 import 'package:magic_pay_app/screens/receive_qr.dart';
 import 'package:magic_pay_app/screens/scan.dart';
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_screen.dart';
-import 'package:magic_pay_app/screens/transfer.dart';
+import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
