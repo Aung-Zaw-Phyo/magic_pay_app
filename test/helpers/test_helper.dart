@@ -12,6 +12,7 @@ import 'package:magic_pay_app/features/notification/data/data_sources/remote_dat
 import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart';
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notification_detail.dart';
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/repositories/scan_pay_repository.dart';
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart';
 import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart';
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transaction_detail.dart';
@@ -31,6 +32,7 @@ import 'package:shared_preferences/shared_preferences.dart';
     NotificationRepository,
     TransactionRepository,
     TransferRepository,
+    ScanPayRepository,
 
     // DataSource
     AuthRemoteDataSource,

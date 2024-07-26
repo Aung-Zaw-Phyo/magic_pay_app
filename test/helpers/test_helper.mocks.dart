@@ -10,26 +10,26 @@ import 'package:dio/dio.dart' as _i9;
 import 'package:magic_pay_app/core/error/failure.dart' as _i12;
 import 'package:magic_pay_app/core/response_data.dart' as _i3;
 import 'package:magic_pay_app/features/auth/data/data_sources/remote_data_source.dart'
-    as _i24;
-import 'package:magic_pay_app/features/auth/data/models/user.dart' as _i25;
+    as _i28;
+import 'package:magic_pay_app/features/auth/data/models/user.dart' as _i29;
 import 'package:magic_pay_app/features/auth/domain/entities/user.dart' as _i13;
 import 'package:magic_pay_app/features/auth/domain/repositories/auth_repositor.dart'
     as _i10;
-import 'package:magic_pay_app/features/auth/domain/usecases/login.dart' as _i32;
+import 'package:magic_pay_app/features/auth/domain/usecases/login.dart' as _i36;
 import 'package:magic_pay_app/features/auth/domain/usecases/logout.dart'
-    as _i33;
+    as _i37;
 import 'package:magic_pay_app/features/auth/domain/usecases/register.dart'
-    as _i34;
+    as _i38;
 import 'package:magic_pay_app/features/home/data/data_sources/remote_data_source.dart'
-    as _i26;
+    as _i30;
 import 'package:magic_pay_app/features/home/domain/repositories/home_repository.dart'
     as _i14;
 import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart'
-    as _i35;
+    as _i39;
 import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart'
-    as _i36;
+    as _i40;
 import 'package:magic_pay_app/features/notification/data/data_sources/remote_data_source.dart'
-    as _i27;
+    as _i31;
 import 'package:magic_pay_app/features/notification/data/models/notification_data_model.dart'
     as _i4;
 import 'package:magic_pay_app/features/notification/data/models/notification_detail_model.dart'
@@ -41,11 +41,19 @@ import 'package:magic_pay_app/features/notification/domain/entities/notification
 import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart'
     as _i15;
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notification_detail.dart'
-    as _i38;
+    as _i42;
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart'
-    as _i37;
+    as _i41;
+import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_data.dart'
+    as _i26;
+import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_form_data.dart'
+    as _i25;
+import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_request.dart'
+    as _i27;
+import 'package:magic_pay_app/features/scan_pay/domain/repositories/scan_pay_repository.dart'
+    as _i24;
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart'
-    as _i28;
+    as _i32;
 import 'package:magic_pay_app/features/transaction/data/models/transaction_detail_model.dart'
     as _i7;
 import 'package:magic_pay_app/features/transaction/data/models/transactions_data_model.dart'
@@ -57,15 +65,15 @@ import 'package:magic_pay_app/features/transaction/domain/entities/transactions_
 import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart'
     as _i18;
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transaction_detail.dart'
-    as _i40;
+    as _i44;
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transactions.dart'
-    as _i39;
+    as _i43;
 import 'package:magic_pay_app/features/transfer/data/data_sources/remote_data_source.dart'
-    as _i29;
+    as _i33;
 import 'package:magic_pay_app/features/transfer/data/models/transfer_data_model.dart'
     as _i8;
 import 'package:magic_pay_app/features/transfer/data/models/transfer_request_model.dart'
-    as _i30;
+    as _i34;
 import 'package:magic_pay_app/features/transfer/domain/entities/transfer_data.dart'
     as _i22;
 import 'package:magic_pay_app/features/transfer/domain/entities/transfer_request.dart'
@@ -73,12 +81,12 @@ import 'package:magic_pay_app/features/transfer/domain/entities/transfer_request
 import 'package:magic_pay_app/features/transfer/domain/repositories/transfer_repository.dart'
     as _i21;
 import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_complete.dart'
-    as _i42;
+    as _i46;
 import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_confirm.dart'
-    as _i41;
+    as _i45;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i31;
-import 'package:shared_preferences/shared_preferences.dart' as _i43;
+import 'package:mockito/src/dummies.dart' as _i35;
+import 'package:shared_preferences/shared_preferences.dart' as _i47;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -497,17 +505,82 @@ class MockTransferRepository extends _i1.Mock
       ) as _i11.Future<_i2.Either<_i12.Failure, String>>);
 }
 
+/// A class which mocks [ScanPayRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockScanPayRepository extends _i1.Mock implements _i24.ScanPayRepository {
+  MockScanPayRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i25.ScanPayFormDataEntity>> scanQrCode(
+          String? toPhone) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #scanQrCode,
+          [toPhone],
+        ),
+        returnValue: _i11
+            .Future<_i2.Either<_i12.Failure, _i25.ScanPayFormDataEntity>>.value(
+            _FakeEither_0<_i12.Failure, _i25.ScanPayFormDataEntity>(
+          this,
+          Invocation.method(
+            #scanQrCode,
+            [toPhone],
+          ),
+        )),
+      ) as _i11.Future<_i2.Either<_i12.Failure, _i25.ScanPayFormDataEntity>>);
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i26.ScanPayDataEntity>> payConfirm(
+          _i27.ScanPayRequestEntity? scanPayRequestEntity) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #payConfirm,
+          [scanPayRequestEntity],
+        ),
+        returnValue:
+            _i11.Future<_i2.Either<_i12.Failure, _i26.ScanPayDataEntity>>.value(
+                _FakeEither_0<_i12.Failure, _i26.ScanPayDataEntity>(
+          this,
+          Invocation.method(
+            #payConfirm,
+            [scanPayRequestEntity],
+          ),
+        )),
+      ) as _i11.Future<_i2.Either<_i12.Failure, _i26.ScanPayDataEntity>>);
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, String>> payComplete(
+          _i27.ScanPayRequestEntity? scanPayRequestEntity) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #payComplete,
+          [scanPayRequestEntity],
+        ),
+        returnValue: _i11.Future<_i2.Either<_i12.Failure, String>>.value(
+            _FakeEither_0<_i12.Failure, String>(
+          this,
+          Invocation.method(
+            #payComplete,
+            [scanPayRequestEntity],
+          ),
+        )),
+      ) as _i11.Future<_i2.Either<_i12.Failure, String>>);
+}
+
 /// A class which mocks [AuthRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i24.AuthRemoteDataSource {
+    implements _i28.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i11.Future<_i3.ResponseData> register(_i25.UserModel? user) =>
+  _i11.Future<_i3.ResponseData> register(_i29.UserModel? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #register,
@@ -569,7 +642,7 @@ class MockAuthRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRemoteDataSource extends _i1.Mock
-    implements _i26.HomeRemoteDataSource {
+    implements _i30.HomeRemoteDataSource {
   MockHomeRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -621,7 +694,7 @@ class MockHomeRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNotificationRemoteDataSource extends _i1.Mock
-    implements _i27.NotificationRemoteDataSource {
+    implements _i31.NotificationRemoteDataSource {
   MockNotificationRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -666,7 +739,7 @@ class MockNotificationRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransactionRemoteDataSource extends _i1.Mock
-    implements _i28.TransactionRemoteDataSource {
+    implements _i32.TransactionRemoteDataSource {
   MockTransactionRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -711,14 +784,14 @@ class MockTransactionRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferRemoteDataSource extends _i1.Mock
-    implements _i29.TransferRemoteDataSource {
+    implements _i33.TransferRemoteDataSource {
   MockTransferRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i11.Future<_i8.TransferDataModel> transferConfirm(
-          _i30.TransferRequestModel? transferRequestModel) =>
+          _i34.TransferRequestModel? transferRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferConfirm,
@@ -736,13 +809,13 @@ class MockTransferRemoteDataSource extends _i1.Mock
 
   @override
   _i11.Future<String> transferComplete(
-          _i30.TransferRequestModel? transferRequestModel) =>
+          _i34.TransferRequestModel? transferRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferComplete,
           [transferRequestModel],
         ),
-        returnValue: _i11.Future<String>.value(_i31.dummyValue<String>(
+        returnValue: _i11.Future<String>.value(_i35.dummyValue<String>(
           this,
           Invocation.method(
             #transferComplete,
@@ -755,7 +828,7 @@ class MockTransferRemoteDataSource extends _i1.Mock
 /// A class which mocks [LoginUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginUseCase extends _i1.Mock implements _i32.LoginUseCase {
+class MockLoginUseCase extends _i1.Mock implements _i36.LoginUseCase {
   MockLoginUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -793,7 +866,7 @@ class MockLoginUseCase extends _i1.Mock implements _i32.LoginUseCase {
 /// A class which mocks [LogoutUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLogoutUseCase extends _i1.Mock implements _i33.LogoutUseCase {
+class MockLogoutUseCase extends _i1.Mock implements _i37.LogoutUseCase {
   MockLogoutUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -820,7 +893,7 @@ class MockLogoutUseCase extends _i1.Mock implements _i33.LogoutUseCase {
 /// A class which mocks [RegisterUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRegisterUseCase extends _i1.Mock implements _i34.RegisterUseCase {
+class MockRegisterUseCase extends _i1.Mock implements _i38.RegisterUseCase {
   MockRegisterUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -848,7 +921,7 @@ class MockRegisterUseCase extends _i1.Mock implements _i34.RegisterUseCase {
 /// A class which mocks [GetProfileUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetProfileUseCase extends _i1.Mock implements _i35.GetProfileUseCase {
+class MockGetProfileUseCase extends _i1.Mock implements _i39.GetProfileUseCase {
   MockGetProfileUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -876,7 +949,7 @@ class MockGetProfileUseCase extends _i1.Mock implements _i35.GetProfileUseCase {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUpdatePasswordUseCase extends _i1.Mock
-    implements _i36.UpdatePasswordUseCase {
+    implements _i40.UpdatePasswordUseCase {
   MockUpdatePasswordUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -915,7 +988,7 @@ class MockUpdatePasswordUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetNotificationsUseCase extends _i1.Mock
-    implements _i37.GetNotificationsUseCase {
+    implements _i41.GetNotificationsUseCase {
   MockGetNotificationsUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -944,7 +1017,7 @@ class MockGetNotificationsUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetNotificationDetailUseCase extends _i1.Mock
-    implements _i38.GetNotificationDetailUseCase {
+    implements _i42.GetNotificationDetailUseCase {
   MockGetNotificationDetailUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -974,7 +1047,7 @@ class MockGetNotificationDetailUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTransactionsUseCase extends _i1.Mock
-    implements _i39.GetTransactionsUseCase {
+    implements _i43.GetTransactionsUseCase {
   MockGetTransactionsUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -1003,7 +1076,7 @@ class MockGetTransactionsUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTransactionDetailUseCase extends _i1.Mock
-    implements _i40.GetTransactionDetailUseCase {
+    implements _i44.GetTransactionDetailUseCase {
   MockGetTransactionDetailUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -1032,7 +1105,7 @@ class MockGetTransactionDetailUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferConfirmUseCase extends _i1.Mock
-    implements _i41.TransferConfirmUseCase {
+    implements _i45.TransferConfirmUseCase {
   MockTransferConfirmUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -1061,7 +1134,7 @@ class MockTransferConfirmUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferCompleteUseCase extends _i1.Mock
-    implements _i42.TransferCompleteUseCase {
+    implements _i46.TransferCompleteUseCase {
   MockTransferCompleteUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -1088,7 +1161,7 @@ class MockTransferCompleteUseCase extends _i1.Mock
 /// A class which mocks [SharedPreferences].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedPreferences extends _i1.Mock implements _i43.SharedPreferences {
+class MockSharedPreferences extends _i1.Mock implements _i47.SharedPreferences {
   MockSharedPreferences() {
     _i1.throwOnMissingStub(this);
   }
