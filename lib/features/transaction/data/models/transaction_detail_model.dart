@@ -8,7 +8,7 @@ class TransactionDetailModel extends TransactionDetailEntity {
     required int type,
     required String dateTime,
     required String source,
-    required String description,
+    String? description,
   }) : super(
           trxId: trxId,
           refNo: refNo,

@@ -5,6 +5,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magic_pay_app/core/constants/constants.dart';
 import 'package:magic_pay_app/core/helper.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
+import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_state.dart';
 import 'package:magic_pay_app/features/transfer/domain/entities/transfer_request.dart';
 import 'package:magic_pay_app/features/transfer/presentation/bloc/transfer_confirm/transfer_confirm_bloc.dart';
 import 'package:magic_pay_app/features/transfer/presentation/bloc/transfer_confirm/transfer_confirm_event.dart';
@@ -65,24 +67,43 @@ class _TransferScreenState extends State<TransferScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'From',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Aung Zaw Phyo',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      '09968548024',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                    ),
-                    const SizedBox(height: 10),
+                    BlocBuilder<ProfileBloc, ProfileState>(
+                        builder: (context, state) {
+                      if (state is ProfileLoaded) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'From',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              state.profileEntity.name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              state.profileEntity.phone,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(),
+                            ),
+                          ],
+                        );
+                      }
+                      return Container();
+                    }),
                     TextFormField(
                       key: const Key('to_phone_field'),
                       decoration: const InputDecoration(

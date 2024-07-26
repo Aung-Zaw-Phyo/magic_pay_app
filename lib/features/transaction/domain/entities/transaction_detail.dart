@@ -7,7 +7,7 @@ class TransactionDetailEntity extends Equatable {
   final int type;
   final String dateTime;
   final String source;
-  final String description;
+  final String? description;
 
   const TransactionDetailEntity({
     required this.trxId,
@@ -16,11 +16,11 @@ class TransactionDetailEntity extends Equatable {
     required this.type,
     required this.dateTime,
     required this.source,
-    required this.description,
+    this.description,
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         trxId,
         refNo,
         amount,

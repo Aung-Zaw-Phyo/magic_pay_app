@@ -44,133 +44,141 @@ class _TransactionScreenState extends State<TransactionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Transaction'),
-      ),
-      body: RefreshIndicator(
-        onRefresh: refresh,
-        child: BlocBuilder<TransactionsBloc, TransactionsState>(
-            builder: (context, state) {
-          if (state is TransactionsLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushNamed(context, '/');
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Transaction'),
+        ),
+        body: RefreshIndicator(
+          onRefresh: refresh,
+          child: BlocBuilder<TransactionsBloc, TransactionsState>(
+              builder: (context, state) {
+            if (state is TransactionsLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
 
-          if (state is TransactionsLoadFailed) {
-            return Center(
-              child: Text(state.error!),
-            );
-          }
+            if (state is TransactionsLoadFailed) {
+              return Center(
+                child: Text(state.error!),
+              );
+            }
 
-          if (state is TransactionsLoaded) {
-            return Padding(
-              key: const Key('transactions'),
-              padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount:
-                          state.transactionsData!.transactions.length + 1,
-                      itemBuilder: (context, index) {
-                        if (index <
-                            state.transactionsData!.transactions.length) {
-                          final transaction =
-                              state.transactionsData!.transactions[index];
-                          return Card(
-                            color: Colors.white,
-                            margin: const EdgeInsets.only(
-                              bottom: 8,
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.of(context).pushNamed(
-                                  '/transaction_detail',
-                                  arguments: transaction.trxId,
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Trx Id: ${transaction.trxId}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge!
-                                              .copyWith(
-                                                fontSize: 17,
-                                              ),
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                          transaction.amount,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge!
-                                              .copyWith(
-                                                color: Colors.red,
-                                                fontSize: 17,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      transaction.title,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge!
-                                          .copyWith(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onBackground
-                                                .withOpacity(0.8),
+            if (state is TransactionsLoaded) {
+              return Padding(
+                key: const Key('transactions'),
+                padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        controller: controller,
+                        itemCount:
+                            state.transactionsData!.transactions.length + 1,
+                        itemBuilder: (context, index) {
+                          if (index <
+                              state.transactionsData!.transactions.length) {
+                            final transaction =
+                                state.transactionsData!.transactions[index];
+                            return Card(
+                              color: Colors.white,
+                              margin: const EdgeInsets.only(
+                                bottom: 8,
+                              ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed(
+                                    '/transaction_detail',
+                                    arguments: transaction.trxId,
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Trx Id: ${transaction.trxId}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                                  fontSize: 17,
+                                                ),
                                           ),
-                                    ),
-                                    Text(
-                                      transaction.dateTime,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge!
-                                          .copyWith(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onBackground
-                                                .withOpacity(0.8),
+                                          const Spacer(),
+                                          Text(
+                                            transaction.amount,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                                  color: Colors.red,
+                                                  fontSize: 17,
+                                                ),
                                           ),
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        transaction.title,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground
+                                                  .withOpacity(0.8),
+                                            ),
+                                      ),
+                                      Text(
+                                        transaction.dateTime,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground
+                                                  .withOpacity(0.8),
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        } else {
-                          if (state.transactionsData!.currentPage ==
-                              state.transactionsData!.lastPage) {
-                            return const SizedBox();
+                            );
+                          } else {
+                            if (state.transactionsData!.currentPage ==
+                                state.transactionsData!.lastPage) {
+                              return const SizedBox();
+                            }
+                            return const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 32),
+                              child: Center(child: CircularProgressIndicator()),
+                            );
                           }
-                          return const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 32),
-                            child: Center(child: CircularProgressIndicator()),
-                          );
-                        }
-                      },
-                    ),
-                  )
-                ],
-              ),
-            );
-          }
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
 
-          return Container();
-        }),
+            return Container();
+          }),
+        ),
       ),
     );
   }

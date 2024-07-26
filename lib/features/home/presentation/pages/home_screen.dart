@@ -33,12 +33,13 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: 120,
-                  width: 120,
+                  height: 130,
+                  width: 130,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       image: NetworkImage(state.profileEntity.profile),
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
