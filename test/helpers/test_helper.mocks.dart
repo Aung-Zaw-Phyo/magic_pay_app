@@ -60,6 +60,12 @@ import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_request
     as _i29;
 import 'package:magic_pay_app/features/scan_pay/domain/repositories/scan_pay_repository.dart'
     as _i26;
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_complete.dart'
+    as _i53;
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_confirm.dart'
+    as _i52;
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/scan_qr_code.dart'
+    as _i51;
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart'
     as _i34;
 import 'package:magic_pay_app/features/transaction/data/models/transaction_detail_model.dart'
@@ -94,7 +100,7 @@ import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_confirm
     as _i49;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i37;
-import 'package:shared_preferences/shared_preferences.dart' as _i51;
+import 'package:shared_preferences/shared_preferences.dart' as _i54;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -1250,10 +1256,94 @@ class MockTransferCompleteUseCase extends _i1.Mock
       ) as _i13.Future<_i2.Either<_i14.Failure, String>>);
 }
 
+/// A class which mocks [ScanQrCodeUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockScanQrCodeUseCase extends _i1.Mock implements _i51.ScanQrCodeUseCase {
+  MockScanQrCodeUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i13.Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>> execute(
+          String? toPhone) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [toPhone],
+        ),
+        returnValue: _i13
+            .Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i27.ScanPayFormDataEntity>(
+          this,
+          Invocation.method(
+            #execute,
+            [toPhone],
+          ),
+        )),
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>>);
+}
+
+/// A class which mocks [PayConfirmUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPayConfirmUseCase extends _i1.Mock implements _i52.PayConfirmUseCase {
+  MockPayConfirmUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>> execute(
+          _i29.ScanPayRequestEntity? scanPayRequestEntity) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [scanPayRequestEntity],
+        ),
+        returnValue:
+            _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i28.ScanPayDataEntity>(
+          this,
+          Invocation.method(
+            #execute,
+            [scanPayRequestEntity],
+          ),
+        )),
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>>);
+}
+
+/// A class which mocks [PayCompleteUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPayCompleteUseCase extends _i1.Mock
+    implements _i53.PayCompleteUseCase {
+  MockPayCompleteUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i13.Future<_i2.Either<_i14.Failure, String>> execute(
+          _i29.ScanPayRequestEntity? scanPayRequestEntity) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [scanPayRequestEntity],
+        ),
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, String>>.value(
+            _FakeEither_0<_i14.Failure, String>(
+          this,
+          Invocation.method(
+            #execute,
+            [scanPayRequestEntity],
+          ),
+        )),
+      ) as _i13.Future<_i2.Either<_i14.Failure, String>>);
+}
+
 /// A class which mocks [SharedPreferences].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedPreferences extends _i1.Mock implements _i51.SharedPreferences {
+class MockSharedPreferences extends _i1.Mock implements _i54.SharedPreferences {
   MockSharedPreferences() {
     _i1.throwOnMissingStub(this);
   }

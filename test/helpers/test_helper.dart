@@ -14,6 +14,9 @@ import 'package:magic_pay_app/features/notification/domain/usecases/get_notifica
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart';
 import 'package:magic_pay_app/features/scan_pay/data/datasources/remote_data_source.dart';
 import 'package:magic_pay_app/features/scan_pay/domain/repositories/scan_pay_repository.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_complete.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_confirm.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/scan_qr_code.dart';
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart';
 import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart';
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transaction_detail.dart';
@@ -55,6 +58,9 @@ import 'package:shared_preferences/shared_preferences.dart';
     GetTransactionDetailUseCase,
     TransferConfirmUseCase,
     TransferCompleteUseCase,
+    ScanQrCodeUseCase,
+    PayConfirmUseCase,
+    PayCompleteUseCase,
 
     // Others
     SharedPreferences,

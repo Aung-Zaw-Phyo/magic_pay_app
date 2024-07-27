@@ -6,8 +6,6 @@ class TransferConfirmState extends Equatable {
 
   @override
   List<Object> get props => [];
-
-  get transferData => null;
 }
 
 class TransferConfirmInitial extends TransferConfirmState {
