@@ -22,6 +22,15 @@ import 'package:magic_pay_app/features/notification/domain/usecases/get_notifica
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notification_detail/notification_detail_bloc.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notifications/notifications_bloc.dart';
+import 'package:magic_pay_app/features/scan_pay/data/datasources/remote_data_source.dart';
+import 'package:magic_pay_app/features/scan_pay/data/repositories/scan_pay_repository_impl.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/repositories/scan_pay_repository.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_complete.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_confirm.dart';
+import 'package:magic_pay_app/features/scan_pay/domain/usecases/scan_qr_code.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/bloc/pay_complete/pay_complete_bloc.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/bloc/pay_confirm/pay_confirm_bloc.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/bloc/scan_qr_code/scan_qr_code_bloc.dart';
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart';
 import 'package:magic_pay_app/features/transaction/data/repositories/transaction_repository_impl.dart';
 import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart';
@@ -67,6 +76,10 @@ void setupLocator() async {
   locator.registerFactory<TransferCompleteBloc>(
       () => TransferCompleteBloc(locator()));
 
+  locator.registerFactory<ScanQrCodeBloc>(() => ScanQrCodeBloc(locator()));
+  locator.registerFactory<PayConfirmBloc>(() => PayConfirmBloc(locator()));
+  locator.registerFactory<PayCompleteBloc>(() => PayCompleteBloc(locator()));
+
   // usecase
   locator.registerLazySingleton<LoginUseCase>(() => LoginUseCase(locator()));
   locator.registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(locator()));
@@ -92,6 +105,13 @@ void setupLocator() async {
   locator.registerLazySingleton<TransferCompleteUseCase>(
       () => TransferCompleteUseCase(locator()));
 
+  locator.registerLazySingleton<ScanQrCodeUseCase>(
+      () => ScanQrCodeUseCase(locator()));
+  locator.registerLazySingleton<PayConfirmUseCase>(
+      () => PayConfirmUseCase(locator()));
+  locator.registerLazySingleton<PayCompleteUseCase>(
+      () => PayCompleteUseCase(locator()));
+
   // repository
   locator.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(locator()));
@@ -103,6 +123,8 @@ void setupLocator() async {
       () => TransactionRepositoryImpl(locator()));
   locator.registerLazySingleton<TransferRepository>(
       () => TransferRepositoryImpl(locator()));
+  locator.registerLazySingleton<ScanPayRepository>(
+      () => ScanPayRepositoryImpl(locator()));
 
   // datasource
   locator.registerLazySingleton<AuthRemoteDataSource>(
@@ -115,6 +137,8 @@ void setupLocator() async {
       () => TransactionRemoteDataSourceImpl(locator()));
   locator.registerLazySingleton<TransferRemoteDataSource>(
       () => TransferRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<ScanPayRemoteDataSource>(
+      () => ScanPayRemoteDataSourceImpl(locator()));
 
   // external
 

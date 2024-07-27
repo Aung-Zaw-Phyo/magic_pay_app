@@ -5,6 +5,9 @@ import 'package:magic_pay_app/features/home/presentation/pages/account_screen.da
 import 'package:magic_pay_app/features/home/presentation/pages/tabs_screen.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_detail_screen.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/pages/pay_confirm_screen.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/pages/pay_form_screen.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/pages/scan_qr_screen.dart';
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_detail_screen.dart';
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_screen.dart';
 import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_confirm_screen.dart';
@@ -52,6 +55,15 @@ class AppRoutes {
 
       case '/transfer_confirm':
         return _materialRoute(const TransferConfirmScreen());
+
+      case '/scan_qr':
+        return _materialRoute(const ScanQrScreen());
+
+      case '/pay_form':
+        return _materialRoute(const PayFormScreen());
+
+      case '/pay_confirm':
+        return _materialRoute(const PayConfirmScreen());
 
       default:
         return _materialRoute(const TabsScreen());

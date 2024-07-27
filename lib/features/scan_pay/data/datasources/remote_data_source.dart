@@ -22,7 +22,7 @@ class ScanPayRemoteDataSourceImpl extends ScanPayRemoteDataSource {
     final prefs = await sharedPrefs();
     final token = prefs.getString('token');
     _dio.options.headers['Authorization'] = 'Bearer $token';
-    final response = await _dio.post(
+    final response = await _dio.get(
       '$baseUrl/scan-and-pay-form',
       data: {"to_phone": toPhone},
     );

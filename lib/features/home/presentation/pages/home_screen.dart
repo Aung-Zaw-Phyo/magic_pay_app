@@ -4,7 +4,7 @@ import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bl
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_state.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
 import 'package:magic_pay_app/screens/receive_qr.dart';
-import 'package:magic_pay_app/screens/scan.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/pages/scan_qr_screen.dart';
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_screen.dart';
 import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_screen.dart';
 
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const ScanScreen(),
+                                  builder: (context) => const ScanQrScreen(),
                                 ),
                               );
                             },

@@ -12,6 +12,9 @@ import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bl
 import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_bloc.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notification_detail/notification_detail_bloc.dart';
 import 'package:magic_pay_app/features/notification/presentation/bloc/notifications/notifications_bloc.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/bloc/pay_complete/pay_complete_bloc.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/bloc/pay_confirm/pay_confirm_bloc.dart';
+import 'package:magic_pay_app/features/scan_pay/presentation/bloc/scan_qr_code/scan_qr_code_bloc.dart';
 import 'package:magic_pay_app/features/transaction/presentation/bloc/transaction_detail/transaction_detail_bloc.dart';
 import 'package:magic_pay_app/features/transaction/presentation/bloc/transactions/transactions_bloc.dart';
 import 'package:magic_pay_app/features/transfer/presentation/bloc/transfer_complete/transfer_complete_bloc.dart';
@@ -48,6 +51,10 @@ class MyApp extends StatelessWidget {
             create: (_) => locator<TransferConfirmBloc>()),
         BlocProvider<TransferCompleteBloc>(
             create: (_) => locator<TransferCompleteBloc>()),
+        BlocProvider<ScanQrCodeBloc>(create: (_) => locator<ScanQrCodeBloc>()),
+        BlocProvider<PayConfirmBloc>(create: (_) => locator<PayConfirmBloc>()),
+        BlocProvider<PayCompleteBloc>(
+            create: (_) => locator<PayCompleteBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
