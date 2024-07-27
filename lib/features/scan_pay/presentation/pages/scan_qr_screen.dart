@@ -117,7 +117,6 @@ class _ScanQrScreenState extends State<ScanQrScreen> {
                 //   _isScanning = !_isScanning;
                 // });
                 const test = '09968548025';
-                result = test;
                 BlocProvider.of<ScanQrCodeBloc>(context).add(ScanQrCode(test));
               },
               icon: Icon(

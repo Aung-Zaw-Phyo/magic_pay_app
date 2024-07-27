@@ -12,7 +12,7 @@ import 'package:magic_pay_app/features/transaction/presentation/pages/transactio
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_screen.dart';
 import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_confirm_screen.dart';
 import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_screen.dart';
-import 'package:magic_pay_app/screens/receive_qr.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/receive_qr_screen.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {

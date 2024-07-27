@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_state.dart';
 import 'package:magic_pay_app/features/notification/presentation/pages/notification_screen.dart';
-import 'package:magic_pay_app/screens/receive_qr.dart';
+import 'package:magic_pay_app/features/home/presentation/pages/receive_qr_screen.dart';
 import 'package:magic_pay_app/features/scan_pay/presentation/pages/scan_qr_screen.dart';
 import 'package:magic_pay_app/features/transaction/presentation/pages/transaction_screen.dart';
 import 'package:magic_pay_app/features/transfer/presentation/pages/transfer_screen.dart';
