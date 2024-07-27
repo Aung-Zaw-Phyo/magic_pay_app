@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:magic_pay_app/features/transfer/data/models/transfer_request_model.dart';
+import 'package:magic_pay_app/features/scan_pay/data/models/scan_pay_request_model.dart';
 
 class ScanPayRequestEntity extends Equatable {
   final String toPhone;
@@ -16,7 +16,7 @@ class ScanPayRequestEntity extends Equatable {
     this.password,
   });
 
-  TransferRequestModel toModel() => TransferRequestModel(
+  ScanPayRequestModel toModel() => ScanPayRequestModel(
         toPhone: toPhone,
         amount: amount,
         hashValue: hashValue,
