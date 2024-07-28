@@ -49,6 +49,7 @@ class ReceiveQrScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         QrImageView(
+                          key: const Key('generated_qr_image'),
                           data: state.profileEntity.phone,
                           version: QrVersions.auto,
                           size: 240,
