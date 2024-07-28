@@ -2,7 +2,6 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/constants/constants.dart';
 import 'package:magic_pay_app/core/error/exception.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/auth/data/data_sources/remote_data_source.dart';
 import 'package:magic_pay_app/features/auth/data/models/user.dart';
 import 'package:mockito/mockito.dart';
@@ -27,14 +26,13 @@ void main() {
 
   group('auth', () {
     group('login', () {
-      test('should return success response data when response code is 200',
-          () async {
+      test('should return token string when response code is 200', () async {
         // arrange
         final mockResponse = dio.Response(
           data: {
             'result': true,
             'message': 'success',
-            'data': 'token',
+            'data': {'token': 'token string value'},
           },
           statusCode: 200,
           requestOptions: dio.RequestOptions(path: '$baseUrl/login'),
@@ -49,7 +47,7 @@ void main() {
             phone: phone, password: password);
 
         //assert
-        expect(result, isA<ResponseData>());
+        expect(result, isA<String>());
       });
 
       test(
@@ -105,7 +103,7 @@ void main() {
         final result = await authRemoteDataSourceImpl.logout();
 
         // assert
-        expect(result, isA<ResponseData>());
+        expect(result, isA<Null>());
       });
 
       test(
@@ -144,15 +142,14 @@ void main() {
         password: 'password',
       );
 
-      test(
-          'should return success response data when response code is 201 or 200',
+      test('should return token string when response code is 201 or 200',
           () async {
         // arrange
         final mockResponse = dio.Response(
           data: {
             'result': true,
             'message': 'success',
-            'data': 'token data',
+            'data': {'token': 'token string value'},
           },
           statusCode: 201,
           requestOptions: dio.RequestOptions(path: '$baseUrl/register'),
@@ -164,7 +161,7 @@ void main() {
         final result = await authRemoteDataSourceImpl.register(testUserModel);
 
         // assert
-        expect(result, isA<ResponseData>());
+        expect(result, isA<String>());
       });
 
       test(

@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/error/exception.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/auth/data/models/user.dart';
 import 'package:magic_pay_app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:mockito/mockito.dart';
@@ -22,12 +21,7 @@ void main() {
 
   const phone = '0123456';
   const password = 'password';
-
-  const testReponseData = ResponseData(
-    result: true,
-    message: 'success',
-    data: 'data',
-  );
+  const token = 'token string value';
 
   // Login Test
   group('login', () {
@@ -36,14 +30,14 @@ void main() {
       () async {
         // arrange
         when(mockAuthRemoteDataSource.login(phone: phone, password: password))
-            .thenAnswer((_) async => testReponseData);
+            .thenAnswer((_) async => token);
 
         // act
         final result =
             await authRepositoryImpl.login(phone: phone, password: password);
 
         // assert
-        expect(result, equals(const Right(testReponseData)));
+        expect(result, equals(const Right(token)));
       },
     );
 
@@ -91,14 +85,13 @@ void main() {
       'should return success logout data when a call to data source is successful',
       () async {
         // arrange
-        when(mockAuthRemoteDataSource.logout())
-            .thenAnswer((_) async => testReponseData);
+        when(mockAuthRemoteDataSource.logout()).thenAnswer((_) async => null);
 
         // act
         final result = await authRepositoryImpl.logout();
 
         // assert
-        expect(result, equals(const Right(testReponseData)));
+        expect(result, equals(const Right(null)));
       },
     );
 
@@ -151,13 +144,13 @@ void main() {
       () async {
         // arrange
         when(mockAuthRemoteDataSource.register(testUserModel))
-            .thenAnswer((_) async => testReponseData);
+            .thenAnswer((_) async => token);
 
         // act
         final result = await authRepositoryImpl.register(testUserModel);
 
         // assert
-        expect(result, equals(const Right(testReponseData)));
+        expect(result, equals(const Right(token)));
       },
     );
 

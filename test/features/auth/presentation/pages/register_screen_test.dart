@@ -2,7 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action_bloc.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action_event.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action_state.dart';
@@ -48,12 +47,6 @@ void main() {
       ),
     );
   }
-
-  const testResponseData = ResponseData(
-    result: true,
-    message: 'Successfully registered.',
-    data: 'token data',
-  );
 
   testWidgets(
     'text fields should exit and work',
@@ -123,8 +116,7 @@ void main() {
     'should show success message when state is loaded',
     (widgetTester) async {
       // arrange
-      when(() => mockAuthActionBloc.state)
-          .thenReturn(const AuthLoaded(result: testResponseData));
+      when(() => mockAuthActionBloc.state).thenReturn(const AuthLoaded());
 
       when(() => mockAuthStatusBloc.state).thenReturn(Authenticated());
 

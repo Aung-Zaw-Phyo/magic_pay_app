@@ -21,7 +21,7 @@ import 'package:magic_pay_app/features/auth/domain/usecases/logout.dart'
 import 'package:magic_pay_app/features/auth/domain/usecases/register.dart'
     as _i42;
 import 'package:magic_pay_app/features/home/data/data_sources/remote_data_source.dart'
-    as _i32;
+    as _i33;
 import 'package:magic_pay_app/features/home/domain/repositories/home_repository.dart'
     as _i16;
 import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart'
@@ -29,7 +29,7 @@ import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart'
 import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart'
     as _i44;
 import 'package:magic_pay_app/features/notification/data/data_sources/remote_data_source.dart'
-    as _i33;
+    as _i34;
 import 'package:magic_pay_app/features/notification/data/models/notification_data_model.dart'
     as _i4;
 import 'package:magic_pay_app/features/notification/data/models/notification_detail_model.dart'
@@ -67,7 +67,7 @@ import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_confirm.dart
 import 'package:magic_pay_app/features/scan_pay/domain/usecases/scan_qr_code.dart'
     as _i51;
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart'
-    as _i34;
+    as _i35;
 import 'package:magic_pay_app/features/transaction/data/models/transaction_detail_model.dart'
     as _i7;
 import 'package:magic_pay_app/features/transaction/data/models/transactions_data_model.dart'
@@ -83,11 +83,11 @@ import 'package:magic_pay_app/features/transaction/domain/usecases/get_transacti
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transactions.dart'
     as _i47;
 import 'package:magic_pay_app/features/transfer/data/data_sources/remote_data_source.dart'
-    as _i35;
+    as _i36;
 import 'package:magic_pay_app/features/transfer/data/models/transfer_data_model.dart'
     as _i8;
 import 'package:magic_pay_app/features/transfer/data/models/transfer_request_model.dart'
-    as _i36;
+    as _i37;
 import 'package:magic_pay_app/features/transfer/domain/entities/transfer_data.dart'
     as _i24;
 import 'package:magic_pay_app/features/transfer/domain/entities/transfer_request.dart'
@@ -99,7 +99,7 @@ import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_complet
 import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_confirm.dart'
     as _i49;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i37;
+import 'package:mockito/src/dummies.dart' as _i32;
 import 'package:shared_preferences/shared_preferences.dart' as _i54;
 
 // ignore_for_file: type=lint
@@ -272,26 +272,25 @@ class MockAuthRepository extends _i1.Mock implements _i12.AuthRepository {
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> register(
+  _i13.Future<_i2.Either<_i14.Failure, String>> register(
           _i15.UserEntity? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #register,
           [user],
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, String>>.value(
+            _FakeEither_0<_i14.Failure, String>(
           this,
           Invocation.method(
             #register,
             [user],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, String>>);
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> login({
+  _i13.Future<_i2.Either<_i14.Failure, String>> login({
     required String? phone,
     required String? password,
   }) =>
@@ -304,9 +303,8 @@ class MockAuthRepository extends _i1.Mock implements _i12.AuthRepository {
             #password: password,
           },
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, String>>.value(
+            _FakeEither_0<_i14.Failure, String>(
           this,
           Invocation.method(
             #login,
@@ -317,25 +315,23 @@ class MockAuthRepository extends _i1.Mock implements _i12.AuthRepository {
             },
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, String>>);
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> logout() =>
-      (super.noSuchMethod(
+  _i13.Future<_i2.Either<_i14.Failure, Null>> logout() => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [],
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, Null>>.value(
+            _FakeEither_0<_i14.Failure, Null>(
           this,
           Invocation.method(
             #logout,
             [],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, Null>>);
 }
 
 /// A class which mocks [HomeRepository].
@@ -616,23 +612,22 @@ class MockAuthRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i13.Future<_i3.ResponseData> register(_i31.UserModel? user) =>
-      (super.noSuchMethod(
+  _i13.Future<String> register(_i31.UserModel? user) => (super.noSuchMethod(
         Invocation.method(
           #register,
           [user],
         ),
-        returnValue: _i13.Future<_i3.ResponseData>.value(_FakeResponseData_1(
+        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
           this,
           Invocation.method(
             #register,
             [user],
           ),
         )),
-      ) as _i13.Future<_i3.ResponseData>);
+      ) as _i13.Future<String>);
 
   @override
-  _i13.Future<_i3.ResponseData> login({
+  _i13.Future<String> login({
     required String? phone,
     required String? password,
   }) =>
@@ -645,7 +640,7 @@ class MockAuthRemoteDataSource extends _i1.Mock
             #password: password,
           },
         ),
-        returnValue: _i13.Future<_i3.ResponseData>.value(_FakeResponseData_1(
+        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
           this,
           Invocation.method(
             #login,
@@ -656,29 +651,23 @@ class MockAuthRemoteDataSource extends _i1.Mock
             },
           ),
         )),
-      ) as _i13.Future<_i3.ResponseData>);
+      ) as _i13.Future<String>);
 
   @override
-  _i13.Future<_i3.ResponseData> logout() => (super.noSuchMethod(
+  _i13.Future<Null> logout() => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [],
         ),
-        returnValue: _i13.Future<_i3.ResponseData>.value(_FakeResponseData_1(
-          this,
-          Invocation.method(
-            #logout,
-            [],
-          ),
-        )),
-      ) as _i13.Future<_i3.ResponseData>);
+        returnValue: _i13.Future<Null>.value(),
+      ) as _i13.Future<Null>);
 }
 
 /// A class which mocks [HomeRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRemoteDataSource extends _i1.Mock
-    implements _i32.HomeRemoteDataSource {
+    implements _i33.HomeRemoteDataSource {
   MockHomeRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -730,7 +719,7 @@ class MockHomeRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNotificationRemoteDataSource extends _i1.Mock
-    implements _i33.NotificationRemoteDataSource {
+    implements _i34.NotificationRemoteDataSource {
   MockNotificationRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -775,7 +764,7 @@ class MockNotificationRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransactionRemoteDataSource extends _i1.Mock
-    implements _i34.TransactionRemoteDataSource {
+    implements _i35.TransactionRemoteDataSource {
   MockTransactionRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -820,14 +809,14 @@ class MockTransactionRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferRemoteDataSource extends _i1.Mock
-    implements _i35.TransferRemoteDataSource {
+    implements _i36.TransferRemoteDataSource {
   MockTransferRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i13.Future<_i8.TransferDataModel> transferConfirm(
-          _i36.TransferRequestModel? transferRequestModel) =>
+          _i37.TransferRequestModel? transferRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferConfirm,
@@ -845,13 +834,13 @@ class MockTransferRemoteDataSource extends _i1.Mock
 
   @override
   _i13.Future<String> transferComplete(
-          _i36.TransferRequestModel? transferRequestModel) =>
+          _i37.TransferRequestModel? transferRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferComplete,
           [transferRequestModel],
         ),
-        returnValue: _i13.Future<String>.value(_i37.dummyValue<String>(
+        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
           this,
           Invocation.method(
             #transferComplete,
@@ -913,7 +902,7 @@ class MockScanPayRemoteDataSource extends _i1.Mock
           #payComplete,
           [scanPayRequestModel],
         ),
-        returnValue: _i13.Future<String>.value(_i37.dummyValue<String>(
+        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
           this,
           Invocation.method(
             #payComplete,
@@ -932,7 +921,7 @@ class MockLoginUseCase extends _i1.Mock implements _i40.LoginUseCase {
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> execute({
+  _i13.Future<_i2.Either<_i14.Failure, String>> execute({
     required String? phone,
     required String? password,
   }) =>
@@ -945,9 +934,8 @@ class MockLoginUseCase extends _i1.Mock implements _i40.LoginUseCase {
             #password: password,
           },
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, String>>.value(
+            _FakeEither_0<_i14.Failure, String>(
           this,
           Invocation.method(
             #execute,
@@ -958,7 +946,7 @@ class MockLoginUseCase extends _i1.Mock implements _i40.LoginUseCase {
             },
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, String>>);
 }
 
 /// A class which mocks [LogoutUseCase].
@@ -970,22 +958,20 @@ class MockLogoutUseCase extends _i1.Mock implements _i41.LogoutUseCase {
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> execute() =>
-      (super.noSuchMethod(
+  _i13.Future<_i2.Either<_i14.Failure, Null>> execute() => (super.noSuchMethod(
         Invocation.method(
           #execute,
           [],
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, Null>>.value(
+            _FakeEither_0<_i14.Failure, Null>(
           this,
           Invocation.method(
             #execute,
             [],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, Null>>);
 }
 
 /// A class which mocks [RegisterUseCase].
@@ -997,23 +983,22 @@ class MockRegisterUseCase extends _i1.Mock implements _i42.RegisterUseCase {
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> execute(
+  _i13.Future<_i2.Either<_i14.Failure, String>> execute(
           _i15.UserEntity? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #execute,
           [user],
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, String>>.value(
+            _FakeEither_0<_i14.Failure, String>(
           this,
           Invocation.method(
             #execute,
             [user],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, String>>);
 }
 
 /// A class which mocks [GetProfileUseCase].

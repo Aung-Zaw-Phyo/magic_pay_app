@@ -41,8 +41,8 @@ class AuthActionBloc extends Bloc<AuthActionEvent, AuthActionState> {
         emit(AuthLoadFailed(message: failure.message));
       },
       (data) {
-        prefs.setString('token', data.data['token']);
-        emit(AuthLoaded(result: data));
+        prefs.setString('token', data);
+        emit(const AuthLoaded());
       },
     );
   }
@@ -58,7 +58,7 @@ class AuthActionBloc extends Bloc<AuthActionEvent, AuthActionState> {
       },
       (data) {
         prefs.remove('token');
-        emit(AuthLoaded(result: data));
+        emit(const AuthLoaded());
       },
     );
   }
@@ -73,8 +73,8 @@ class AuthActionBloc extends Bloc<AuthActionEvent, AuthActionState> {
         emit(AuthLoadFailed(message: failure.message));
       },
       (data) {
-        prefs.setString('token', data.data['token']);
-        emit(AuthLoaded(result: data));
+        prefs.setString('token', data);
+        emit(const AuthLoaded());
       },
     );
   }

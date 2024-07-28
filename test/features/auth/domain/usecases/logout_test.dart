@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/auth/domain/usecases/logout.dart';
 import 'package:mockito/mockito.dart';
 
@@ -16,24 +15,18 @@ void main() {
     logoutUseCase = LogoutUseCase(mockAuthRepository);
   });
 
-  const testReponseData = ResponseData(
-    result: true,
-    message: 'Successfully logout.',
-    data: 'token data',
-  );
-
   group('logout', () {
     test('should return success response data when logout success.', () async {
       // arrange
       when(
         mockAuthRepository.logout(),
-      ).thenAnswer((_) async => const Right(testReponseData));
+      ).thenAnswer((_) async => const Right(null));
 
       // act
       final result = await logoutUseCase.execute();
 
       // assert
-      expect(result, const Right(testReponseData));
+      expect(result, const Right(null));
     });
 
     test('should return server eror when logout is not success.', () async {

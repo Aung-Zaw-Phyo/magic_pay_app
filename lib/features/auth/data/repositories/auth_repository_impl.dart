@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:magic_pay_app/core/error/exception.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/auth/data/data_sources/remote_data_source.dart';
 import 'package:magic_pay_app/features/auth/domain/entities/user.dart';
 import 'package:magic_pay_app/features/auth/domain/repositories/auth_repositor.dart';
@@ -13,7 +12,7 @@ class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl(this._authRemoteDataSource);
 
   @override
-  Future<Either<Failure, ResponseData>> login(
+  Future<Either<Failure, String>> login(
       {required String phone, required String password}) async {
     try {
       final result =
@@ -27,7 +26,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, ResponseData>> logout() async {
+  Future<Either<Failure, Null>> logout() async {
     try {
       final result = await _authRemoteDataSource.logout();
       return Right(result);
@@ -39,7 +38,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, ResponseData>> register(UserEntity user) async {
+  Future<Either<Failure, String>> register(UserEntity user) async {
     try {
       final result = await _authRemoteDataSource.register(user.toModel());
       return Right(result);

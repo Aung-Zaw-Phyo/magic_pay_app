@@ -149,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           }
                           if (state is AuthLoaded) {
                             SchedulerBinding.instance.addPostFrameCallback((_) {
-                              success(context, state.result.message);
+                              success(context, 'Registered successfully');
                               BlocProvider.of<AuthStatusBloc>(context)
                                   .add(const CheckAuthStatus());
                               Navigator.pushReplacementNamed(context, '/');

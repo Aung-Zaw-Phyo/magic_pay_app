@@ -2,7 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/auth/domain/entities/user.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action_bloc.dart';
 import 'package:magic_pay_app/features/auth/presentation/bloc/action/auth_action_event.dart';
@@ -32,11 +31,7 @@ void main() {
     // mockSharedPreferences = MockSharedPreferences();
   });
 
-  const testResponseData = ResponseData(
-    result: true,
-    message: 'success',
-    data: {'token': 'token_value'},
-  );
+  const token = 'token string value';
   const phone = '123456';
   const password = 'password';
   const testUserEntity = UserEntity(
@@ -55,7 +50,7 @@ void main() {
       'should emit [AuthLoading, AuthLoaded] when data is gotten successfully.',
       build: () {
         when(mockLoginUseCase.execute(phone: phone, password: password))
-            .thenAnswer((_) async => const Right(testResponseData));
+            .thenAnswer((_) async => const Right(token));
         // when(mockSharedPreferences.setString(any, any))
         //     .thenAnswer((_) async => true);
         return authBloc;
@@ -65,7 +60,7 @@ void main() {
       wait: const Duration(milliseconds: 500),
       expect: () => [
         AuthLoading(),
-        const AuthLoaded(result: testResponseData),
+        const AuthLoaded(),
       ],
     );
 
@@ -93,7 +88,7 @@ void main() {
       'should emit [AuthLoading, AuthLoaded] when data is gotten successfully.',
       build: () {
         when(mockLogoutUseCase.execute())
-            .thenAnswer((_) async => const Right(testResponseData));
+            .thenAnswer((_) async => const Right(null));
 
         return authBloc;
       },
@@ -101,7 +96,7 @@ void main() {
       wait: const Duration(milliseconds: 500),
       expect: () => [
         AuthLoading(),
-        const AuthLoaded(result: testResponseData),
+        const AuthLoaded(),
       ],
     );
 
@@ -127,7 +122,7 @@ void main() {
       'should emit [AuthLoading, AuthLoaded] when data is gotten successfully.',
       build: () {
         when(mockRegisterUseCase.execute(testUserEntity))
-            .thenAnswer((_) async => const Right(testResponseData));
+            .thenAnswer((_) async => const Right(token));
 
         return authBloc;
       },
@@ -135,7 +130,7 @@ void main() {
       wait: const Duration(milliseconds: 500),
       expect: () => [
         AuthLoading(),
-        const AuthLoaded(result: testResponseData),
+        const AuthLoaded(),
       ],
     );
 

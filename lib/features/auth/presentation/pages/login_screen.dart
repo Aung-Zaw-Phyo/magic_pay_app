@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                           if (state is AuthLoaded) {
                             SchedulerBinding.instance.addPostFrameCallback((_) {
-                              success(context, state.result.message);
+                              success(context, "Logined successfully");
                               BlocProvider.of<AuthStatusBloc>(context)
                                   .add(const CheckAuthStatus());
                             });
