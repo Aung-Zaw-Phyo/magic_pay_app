@@ -3,6 +3,7 @@ import 'package:magic_pay_app/core/constants/constants.dart';
 import 'package:magic_pay_app/core/error/exception.dart';
 import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/home/data/data_sources/remote_data_source.dart';
+import 'package:magic_pay_app/features/home/data/models/profile_model.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart' as dio;
@@ -22,19 +23,39 @@ void main() {
   });
 
   const token = 'test_token';
+  const testProfileModel = ProfileModel(
+    name: "Tester",
+    email: "tester@gmail.com",
+    phone: "123456",
+    accountNumber: "876872478236478234",
+    balance: "300000",
+    profile: "profile image",
+    receiveQrValue: "123456",
+    unreadNotiCount: 0,
+  );
+
+  const jsonMap = {
+    "name": "Tester",
+    "email": "tester@gmail.com",
+    "phone": "123456",
+    "account_number": "876872478236478234",
+    "balance": "300000",
+    "profile": "profile image",
+    "receive_qr_value": "123456",
+    "unread_noti_count": 0,
+  };
 
   group('profile', () {
     test(
       'should return success response data when response code is 200',
       () async {
         // arrange
-        const responseData = ResponseData(
-          result: true,
-          message: 'success',
-          data: 'profile data',
-        );
         final mockResponse = dio.Response(
-          data: responseData.toJson(),
+          data: {
+            'result': true,
+            'message': 'success',
+            'data': jsonMap,
+          },
           statusCode: 200,
           requestOptions: dio.RequestOptions(path: '$baseUrl/profile'),
         );
@@ -48,8 +69,8 @@ void main() {
         final result = await homeRemoteDataSourceImpl.getProfile();
 
         // assert
-        expect(result, equals(responseData));
-        expect(result, isA<ResponseData>());
+        expect(result, equals(testProfileModel));
+        expect(result, isA<ProfileModel>());
       },
     );
 
@@ -88,7 +109,7 @@ void main() {
         const responseData = ResponseData(
           result: true,
           message: 'success',
-          data: 'data',
+          data: null,
         );
         final mockResponse = dio.Response(
           data: responseData.toJson(),
@@ -110,8 +131,8 @@ void main() {
             oldPassword: oldPassword, newPassword: newPassword);
 
         // assert
-        expect(result, equals(responseData));
-        expect(result, isA<ResponseData>());
+        expect(result, equals(null));
+        expect(result, isA<Null>());
       },
     );
 

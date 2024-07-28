@@ -2,7 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_event.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/update_password/update_password_state.dart';
@@ -19,11 +18,6 @@ void main() {
     updatePasswordBloc = UpdatePasswordBloc(mockUpdatePasswordUseCase);
   });
 
-  const testResponseData = ResponseData(
-    result: true,
-    message: 'success',
-    data: 'data',
-  );
   const oldPassword = 'password-old';
   const newPassword = 'password-new';
 
@@ -37,7 +31,7 @@ void main() {
       build: () {
         when(mockUpdatePasswordUseCase.execute(
                 oldPassword: oldPassword, newPassword: newPassword))
-            .thenAnswer((_) async => const Right(testResponseData));
+            .thenAnswer((_) async => const Right(null));
         return updatePasswordBloc;
       },
       act: (bloc) => bloc.add(const UpdatePassword(

@@ -8,99 +8,102 @@ import 'dart:async' as _i13;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:dio/dio.dart' as _i11;
 import 'package:magic_pay_app/core/error/failure.dart' as _i14;
-import 'package:magic_pay_app/core/response_data.dart' as _i3;
 import 'package:magic_pay_app/features/auth/data/data_sources/remote_data_source.dart'
-    as _i30;
-import 'package:magic_pay_app/features/auth/data/models/user.dart' as _i31;
+    as _i31;
+import 'package:magic_pay_app/features/auth/data/models/user.dart' as _i32;
 import 'package:magic_pay_app/features/auth/domain/entities/user.dart' as _i15;
 import 'package:magic_pay_app/features/auth/domain/repositories/auth_repositor.dart'
     as _i12;
-import 'package:magic_pay_app/features/auth/domain/usecases/login.dart' as _i40;
+import 'package:magic_pay_app/features/auth/domain/usecases/login.dart' as _i41;
 import 'package:magic_pay_app/features/auth/domain/usecases/logout.dart'
-    as _i41;
-import 'package:magic_pay_app/features/auth/domain/usecases/register.dart'
     as _i42;
+import 'package:magic_pay_app/features/auth/domain/usecases/register.dart'
+    as _i43;
 import 'package:magic_pay_app/features/home/data/data_sources/remote_data_source.dart'
-    as _i33;
+    as _i34;
+import 'package:magic_pay_app/features/home/data/models/profile_model.dart'
+    as _i3;
+import 'package:magic_pay_app/features/home/domain/entities/Profile.dart'
+    as _i17;
 import 'package:magic_pay_app/features/home/domain/repositories/home_repository.dart'
     as _i16;
 import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart'
-    as _i43;
-import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart'
     as _i44;
+import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart'
+    as _i45;
 import 'package:magic_pay_app/features/notification/data/data_sources/remote_data_source.dart'
-    as _i34;
+    as _i35;
 import 'package:magic_pay_app/features/notification/data/models/notification_data_model.dart'
     as _i4;
 import 'package:magic_pay_app/features/notification/data/models/notification_detail_model.dart'
     as _i5;
 import 'package:magic_pay_app/features/notification/domain/entities/notification_data.dart'
-    as _i18;
-import 'package:magic_pay_app/features/notification/domain/entities/notification_detail.dart'
     as _i19;
+import 'package:magic_pay_app/features/notification/domain/entities/notification_detail.dart'
+    as _i20;
 import 'package:magic_pay_app/features/notification/domain/repositories/notification_repositor.dart'
-    as _i17;
+    as _i18;
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notification_detail.dart'
-    as _i46;
+    as _i47;
 import 'package:magic_pay_app/features/notification/domain/usecases/get_notifications.dart'
-    as _i45;
+    as _i46;
 import 'package:magic_pay_app/features/scan_pay/data/datasources/remote_data_source.dart'
-    as _i38;
+    as _i39;
 import 'package:magic_pay_app/features/scan_pay/data/models/scan_pay_data_model.dart'
     as _i10;
 import 'package:magic_pay_app/features/scan_pay/data/models/scan_pay_form_data_model.dart'
     as _i9;
 import 'package:magic_pay_app/features/scan_pay/data/models/scan_pay_request_model.dart'
-    as _i39;
+    as _i40;
 import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_data.dart'
-    as _i28;
-import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_form_data.dart'
-    as _i27;
-import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_request.dart'
     as _i29;
+import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_form_data.dart'
+    as _i28;
+import 'package:magic_pay_app/features/scan_pay/domain/entities/scan_pay_request.dart'
+    as _i30;
 import 'package:magic_pay_app/features/scan_pay/domain/repositories/scan_pay_repository.dart'
-    as _i26;
+    as _i27;
 import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_complete.dart'
-    as _i53;
+    as _i54;
 import 'package:magic_pay_app/features/scan_pay/domain/usecases/pay_confirm.dart'
-    as _i52;
+    as _i53;
 import 'package:magic_pay_app/features/scan_pay/domain/usecases/scan_qr_code.dart'
-    as _i51;
+    as _i52;
 import 'package:magic_pay_app/features/transaction/data/data_sources/remote_data_source.dart'
-    as _i35;
+    as _i36;
 import 'package:magic_pay_app/features/transaction/data/models/transaction_detail_model.dart'
     as _i7;
 import 'package:magic_pay_app/features/transaction/data/models/transactions_data_model.dart'
     as _i6;
 import 'package:magic_pay_app/features/transaction/domain/entities/transaction_detail.dart'
-    as _i22;
+    as _i23;
 import 'package:magic_pay_app/features/transaction/domain/entities/transactions_data.dart'
-    as _i21;
+    as _i22;
 import 'package:magic_pay_app/features/transaction/domain/repositories/transaction_repository.dart'
-    as _i20;
+    as _i21;
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transaction_detail.dart'
-    as _i48;
+    as _i49;
 import 'package:magic_pay_app/features/transaction/domain/usecases/get_transactions.dart'
-    as _i47;
+    as _i48;
 import 'package:magic_pay_app/features/transfer/data/data_sources/remote_data_source.dart'
-    as _i36;
+    as _i37;
 import 'package:magic_pay_app/features/transfer/data/models/transfer_data_model.dart'
     as _i8;
 import 'package:magic_pay_app/features/transfer/data/models/transfer_request_model.dart'
-    as _i37;
+    as _i38;
 import 'package:magic_pay_app/features/transfer/domain/entities/transfer_data.dart'
-    as _i24;
-import 'package:magic_pay_app/features/transfer/domain/entities/transfer_request.dart'
     as _i25;
+import 'package:magic_pay_app/features/transfer/domain/entities/transfer_request.dart'
+    as _i26;
 import 'package:magic_pay_app/features/transfer/domain/repositories/transfer_repository.dart'
-    as _i23;
+    as _i24;
 import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_complete.dart'
-    as _i50;
+    as _i51;
 import 'package:magic_pay_app/features/transfer/domain/usecases/transfer_confirm.dart'
-    as _i49;
+    as _i50;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i32;
-import 'package:shared_preferences/shared_preferences.dart' as _i54;
+import 'package:mockito/src/dummies.dart' as _i33;
+import 'package:shared_preferences/shared_preferences.dart' as _i55;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -125,8 +128,8 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
         );
 }
 
-class _FakeResponseData_1 extends _i1.SmartFake implements _i3.ResponseData {
-  _FakeResponseData_1(
+class _FakeProfileModel_1 extends _i1.SmartFake implements _i3.ProfileModel {
+  _FakeProfileModel_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -343,25 +346,25 @@ class MockHomeRepository extends _i1.Mock implements _i16.HomeRepository {
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> getProfile() =>
+  _i13.Future<_i2.Either<_i14.Failure, _i17.ProfileEntity>> getProfile() =>
       (super.noSuchMethod(
         Invocation.method(
           #getProfile,
           [],
         ),
         returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+            _i13.Future<_i2.Either<_i14.Failure, _i17.ProfileEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i17.ProfileEntity>(
           this,
           Invocation.method(
             #getProfile,
             [],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i17.ProfileEntity>>);
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> updatePassword({
+  _i13.Future<_i2.Either<_i14.Failure, Null>> updatePassword({
     required String? oldPassword,
     required String? newPassword,
   }) =>
@@ -374,9 +377,8 @@ class MockHomeRepository extends _i1.Mock implements _i16.HomeRepository {
             #newPassword: newPassword,
           },
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, Null>>.value(
+            _FakeEither_0<_i14.Failure, Null>(
           this,
           Invocation.method(
             #updatePassword,
@@ -387,21 +389,21 @@ class MockHomeRepository extends _i1.Mock implements _i16.HomeRepository {
             },
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, Null>>);
 }
 
 /// A class which mocks [NotificationRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNotificationRepository extends _i1.Mock
-    implements _i17.NotificationRepository {
+    implements _i18.NotificationRepository {
   MockNotificationRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i13.Future<
-      _i2.Either<_i14.Failure, _i18.NotificationDataEntity>> getNotifications(
+      _i2.Either<_i14.Failure, _i19.NotificationDataEntity>> getNotifications(
           int? page) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -409,18 +411,18 @@ class MockNotificationRepository extends _i1.Mock
           [page],
         ),
         returnValue: _i13.Future<
-                _i2.Either<_i14.Failure, _i18.NotificationDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i18.NotificationDataEntity>(
+                _i2.Either<_i14.Failure, _i19.NotificationDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i19.NotificationDataEntity>(
           this,
           Invocation.method(
             #getNotifications,
             [page],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i18.NotificationDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i19.NotificationDataEntity>>);
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i19.NotificationDetailEntity>>
+  _i13.Future<_i2.Either<_i14.Failure, _i20.NotificationDetailEntity>>
       getNotificationDetail(String? notificationId) => (super.noSuchMethod(
             Invocation.method(
               #getNotificationDetail,
@@ -428,8 +430,8 @@ class MockNotificationRepository extends _i1.Mock
             ),
             returnValue: _i13.Future<
                     _i2
-                    .Either<_i14.Failure, _i19.NotificationDetailEntity>>.value(
-                _FakeEither_0<_i14.Failure, _i19.NotificationDetailEntity>(
+                    .Either<_i14.Failure, _i20.NotificationDetailEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i20.NotificationDetailEntity>(
               this,
               Invocation.method(
                 #getNotificationDetail,
@@ -437,21 +439,21 @@ class MockNotificationRepository extends _i1.Mock
               ),
             )),
           ) as _i13
-              .Future<_i2.Either<_i14.Failure, _i19.NotificationDetailEntity>>);
+              .Future<_i2.Either<_i14.Failure, _i20.NotificationDetailEntity>>);
 }
 
 /// A class which mocks [TransactionRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransactionRepository extends _i1.Mock
-    implements _i20.TransactionRepository {
+    implements _i21.TransactionRepository {
   MockTransactionRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i13.Future<
-      _i2.Either<_i14.Failure, _i21.TransactionsDataEntity>> getTransactions(
+      _i2.Either<_i14.Failure, _i22.TransactionsDataEntity>> getTransactions(
           int? page) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -459,18 +461,18 @@ class MockTransactionRepository extends _i1.Mock
           [page],
         ),
         returnValue: _i13.Future<
-                _i2.Either<_i14.Failure, _i21.TransactionsDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i21.TransactionsDataEntity>(
+                _i2.Either<_i14.Failure, _i22.TransactionsDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i22.TransactionsDataEntity>(
           this,
           Invocation.method(
             #getTransactions,
             [page],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i21.TransactionsDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i22.TransactionsDataEntity>>);
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i22.TransactionDetailEntity>>
+  _i13.Future<_i2.Either<_i14.Failure, _i23.TransactionDetailEntity>>
       getTransactionDetail(String? transactionId) => (super.noSuchMethod(
             Invocation.method(
               #getTransactionDetail,
@@ -478,8 +480,8 @@ class MockTransactionRepository extends _i1.Mock
             ),
             returnValue: _i13.Future<
                     _i2
-                    .Either<_i14.Failure, _i22.TransactionDetailEntity>>.value(
-                _FakeEither_0<_i14.Failure, _i22.TransactionDetailEntity>(
+                    .Either<_i14.Failure, _i23.TransactionDetailEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i23.TransactionDetailEntity>(
               this,
               Invocation.method(
                 #getTransactionDetail,
@@ -487,40 +489,40 @@ class MockTransactionRepository extends _i1.Mock
               ),
             )),
           ) as _i13
-              .Future<_i2.Either<_i14.Failure, _i22.TransactionDetailEntity>>);
+              .Future<_i2.Either<_i14.Failure, _i23.TransactionDetailEntity>>);
 }
 
 /// A class which mocks [TransferRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferRepository extends _i1.Mock
-    implements _i23.TransferRepository {
+    implements _i24.TransferRepository {
   MockTransferRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i24.TransferDataEntity>>
-      transferConfirm(_i25.TransferRequestEntity? transferRequest) =>
+  _i13.Future<_i2.Either<_i14.Failure, _i25.TransferDataEntity>>
+      transferConfirm(_i26.TransferRequestEntity? transferRequest) =>
           (super.noSuchMethod(
             Invocation.method(
               #transferConfirm,
               [transferRequest],
             ),
             returnValue: _i13.Future<
-                    _i2.Either<_i14.Failure, _i24.TransferDataEntity>>.value(
-                _FakeEither_0<_i14.Failure, _i24.TransferDataEntity>(
+                    _i2.Either<_i14.Failure, _i25.TransferDataEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i25.TransferDataEntity>(
               this,
               Invocation.method(
                 #transferConfirm,
                 [transferRequest],
               ),
             )),
-          ) as _i13.Future<_i2.Either<_i14.Failure, _i24.TransferDataEntity>>);
+          ) as _i13.Future<_i2.Either<_i14.Failure, _i25.TransferDataEntity>>);
 
   @override
   _i13.Future<_i2.Either<_i14.Failure, String>> transferComplete(
-          _i25.TransferRequestEntity? transferRequest) =>
+          _i26.TransferRequestEntity? transferRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferComplete,
@@ -540,13 +542,13 @@ class MockTransferRepository extends _i1.Mock
 /// A class which mocks [ScanPayRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockScanPayRepository extends _i1.Mock implements _i26.ScanPayRepository {
+class MockScanPayRepository extends _i1.Mock implements _i27.ScanPayRepository {
   MockScanPayRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>> scanQrCode(
+  _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayFormDataEntity>> scanQrCode(
           String? toPhone) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -554,38 +556,38 @@ class MockScanPayRepository extends _i1.Mock implements _i26.ScanPayRepository {
           [toPhone],
         ),
         returnValue: _i13
-            .Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i27.ScanPayFormDataEntity>(
+            .Future<_i2.Either<_i14.Failure, _i28.ScanPayFormDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i28.ScanPayFormDataEntity>(
           this,
           Invocation.method(
             #scanQrCode,
             [toPhone],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayFormDataEntity>>);
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>> payConfirm(
-          _i29.ScanPayRequestEntity? scanPayRequestEntity) =>
+  _i13.Future<_i2.Either<_i14.Failure, _i29.ScanPayDataEntity>> payConfirm(
+          _i30.ScanPayRequestEntity? scanPayRequestEntity) =>
       (super.noSuchMethod(
         Invocation.method(
           #payConfirm,
           [scanPayRequestEntity],
         ),
         returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>>.value(
-                _FakeEither_0<_i14.Failure, _i28.ScanPayDataEntity>(
+            _i13.Future<_i2.Either<_i14.Failure, _i29.ScanPayDataEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i29.ScanPayDataEntity>(
           this,
           Invocation.method(
             #payConfirm,
             [scanPayRequestEntity],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i29.ScanPayDataEntity>>);
 
   @override
   _i13.Future<_i2.Either<_i14.Failure, String>> payComplete(
-          _i29.ScanPayRequestEntity? scanPayRequestEntity) =>
+          _i30.ScanPayRequestEntity? scanPayRequestEntity) =>
       (super.noSuchMethod(
         Invocation.method(
           #payComplete,
@@ -606,18 +608,18 @@ class MockScanPayRepository extends _i1.Mock implements _i26.ScanPayRepository {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i30.AuthRemoteDataSource {
+    implements _i31.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<String> register(_i31.UserModel? user) => (super.noSuchMethod(
+  _i13.Future<String> register(_i32.UserModel? user) => (super.noSuchMethod(
         Invocation.method(
           #register,
           [user],
         ),
-        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
+        returnValue: _i13.Future<String>.value(_i33.dummyValue<String>(
           this,
           Invocation.method(
             #register,
@@ -640,7 +642,7 @@ class MockAuthRemoteDataSource extends _i1.Mock
             #password: password,
           },
         ),
-        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
+        returnValue: _i13.Future<String>.value(_i33.dummyValue<String>(
           this,
           Invocation.method(
             #login,
@@ -667,28 +669,28 @@ class MockAuthRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRemoteDataSource extends _i1.Mock
-    implements _i33.HomeRemoteDataSource {
+    implements _i34.HomeRemoteDataSource {
   MockHomeRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i3.ResponseData> getProfile() => (super.noSuchMethod(
+  _i13.Future<_i3.ProfileModel> getProfile() => (super.noSuchMethod(
         Invocation.method(
           #getProfile,
           [],
         ),
-        returnValue: _i13.Future<_i3.ResponseData>.value(_FakeResponseData_1(
+        returnValue: _i13.Future<_i3.ProfileModel>.value(_FakeProfileModel_1(
           this,
           Invocation.method(
             #getProfile,
             [],
           ),
         )),
-      ) as _i13.Future<_i3.ResponseData>);
+      ) as _i13.Future<_i3.ProfileModel>);
 
   @override
-  _i13.Future<_i3.ResponseData> updatePassword({
+  _i13.Future<Null> updatePassword({
     required String? oldPassword,
     required String? newPassword,
   }) =>
@@ -701,25 +703,15 @@ class MockHomeRemoteDataSource extends _i1.Mock
             #newPassword: newPassword,
           },
         ),
-        returnValue: _i13.Future<_i3.ResponseData>.value(_FakeResponseData_1(
-          this,
-          Invocation.method(
-            #updatePassword,
-            [],
-            {
-              #oldPassword: oldPassword,
-              #newPassword: newPassword,
-            },
-          ),
-        )),
-      ) as _i13.Future<_i3.ResponseData>);
+        returnValue: _i13.Future<Null>.value(),
+      ) as _i13.Future<Null>);
 }
 
 /// A class which mocks [NotificationRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNotificationRemoteDataSource extends _i1.Mock
-    implements _i34.NotificationRemoteDataSource {
+    implements _i35.NotificationRemoteDataSource {
   MockNotificationRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -764,7 +756,7 @@ class MockNotificationRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransactionRemoteDataSource extends _i1.Mock
-    implements _i35.TransactionRemoteDataSource {
+    implements _i36.TransactionRemoteDataSource {
   MockTransactionRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -809,14 +801,14 @@ class MockTransactionRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferRemoteDataSource extends _i1.Mock
-    implements _i36.TransferRemoteDataSource {
+    implements _i37.TransferRemoteDataSource {
   MockTransferRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i13.Future<_i8.TransferDataModel> transferConfirm(
-          _i37.TransferRequestModel? transferRequestModel) =>
+          _i38.TransferRequestModel? transferRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferConfirm,
@@ -834,13 +826,13 @@ class MockTransferRemoteDataSource extends _i1.Mock
 
   @override
   _i13.Future<String> transferComplete(
-          _i37.TransferRequestModel? transferRequestModel) =>
+          _i38.TransferRequestModel? transferRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #transferComplete,
           [transferRequestModel],
         ),
-        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
+        returnValue: _i13.Future<String>.value(_i33.dummyValue<String>(
           this,
           Invocation.method(
             #transferComplete,
@@ -854,7 +846,7 @@ class MockTransferRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockScanPayRemoteDataSource extends _i1.Mock
-    implements _i38.ScanPayRemoteDataSource {
+    implements _i39.ScanPayRemoteDataSource {
   MockScanPayRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -878,7 +870,7 @@ class MockScanPayRemoteDataSource extends _i1.Mock
 
   @override
   _i13.Future<_i10.ScanPayDataModel> payConfirm(
-          _i39.ScanPayRequestModel? scanPayRequestModel) =>
+          _i40.ScanPayRequestModel? scanPayRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #payConfirm,
@@ -896,13 +888,13 @@ class MockScanPayRemoteDataSource extends _i1.Mock
 
   @override
   _i13.Future<String> payComplete(
-          _i39.ScanPayRequestModel? scanPayRequestModel) =>
+          _i40.ScanPayRequestModel? scanPayRequestModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #payComplete,
           [scanPayRequestModel],
         ),
-        returnValue: _i13.Future<String>.value(_i32.dummyValue<String>(
+        returnValue: _i13.Future<String>.value(_i33.dummyValue<String>(
           this,
           Invocation.method(
             #payComplete,
@@ -915,7 +907,7 @@ class MockScanPayRemoteDataSource extends _i1.Mock
 /// A class which mocks [LoginUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginUseCase extends _i1.Mock implements _i40.LoginUseCase {
+class MockLoginUseCase extends _i1.Mock implements _i41.LoginUseCase {
   MockLoginUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -952,7 +944,7 @@ class MockLoginUseCase extends _i1.Mock implements _i40.LoginUseCase {
 /// A class which mocks [LogoutUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLogoutUseCase extends _i1.Mock implements _i41.LogoutUseCase {
+class MockLogoutUseCase extends _i1.Mock implements _i42.LogoutUseCase {
   MockLogoutUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -977,7 +969,7 @@ class MockLogoutUseCase extends _i1.Mock implements _i41.LogoutUseCase {
 /// A class which mocks [RegisterUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRegisterUseCase extends _i1.Mock implements _i42.RegisterUseCase {
+class MockRegisterUseCase extends _i1.Mock implements _i43.RegisterUseCase {
   MockRegisterUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -1004,41 +996,41 @@ class MockRegisterUseCase extends _i1.Mock implements _i42.RegisterUseCase {
 /// A class which mocks [GetProfileUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetProfileUseCase extends _i1.Mock implements _i43.GetProfileUseCase {
+class MockGetProfileUseCase extends _i1.Mock implements _i44.GetProfileUseCase {
   MockGetProfileUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> execute() =>
+  _i13.Future<_i2.Either<_i14.Failure, _i17.ProfileEntity>> execute() =>
       (super.noSuchMethod(
         Invocation.method(
           #execute,
           [],
         ),
         returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+            _i13.Future<_i2.Either<_i14.Failure, _i17.ProfileEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i17.ProfileEntity>(
           this,
           Invocation.method(
             #execute,
             [],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i17.ProfileEntity>>);
 }
 
 /// A class which mocks [UpdatePasswordUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUpdatePasswordUseCase extends _i1.Mock
-    implements _i44.UpdatePasswordUseCase {
+    implements _i45.UpdatePasswordUseCase {
   MockUpdatePasswordUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>> execute({
+  _i13.Future<_i2.Either<_i14.Failure, Null>> execute({
     required String? oldPassword,
     required String? newPassword,
   }) =>
@@ -1051,9 +1043,8 @@ class MockUpdatePasswordUseCase extends _i1.Mock
             #newPassword: newPassword,
           },
         ),
-        returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>.value(
-                _FakeEither_0<_i14.Failure, _i3.ResponseData>(
+        returnValue: _i13.Future<_i2.Either<_i14.Failure, Null>>.value(
+            _FakeEither_0<_i14.Failure, Null>(
           this,
           Invocation.method(
             #execute,
@@ -1064,20 +1055,20 @@ class MockUpdatePasswordUseCase extends _i1.Mock
             },
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i3.ResponseData>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, Null>>);
 }
 
 /// A class which mocks [GetNotificationsUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetNotificationsUseCase extends _i1.Mock
-    implements _i45.GetNotificationsUseCase {
+    implements _i46.GetNotificationsUseCase {
   MockGetNotificationsUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i18.NotificationDataEntity>> execute(
+  _i13.Future<_i2.Either<_i14.Failure, _i19.NotificationDataEntity>> execute(
           int? page) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1085,28 +1076,28 @@ class MockGetNotificationsUseCase extends _i1.Mock
           [page],
         ),
         returnValue: _i13.Future<
-                _i2.Either<_i14.Failure, _i18.NotificationDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i18.NotificationDataEntity>(
+                _i2.Either<_i14.Failure, _i19.NotificationDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i19.NotificationDataEntity>(
           this,
           Invocation.method(
             #execute,
             [page],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i18.NotificationDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i19.NotificationDataEntity>>);
 }
 
 /// A class which mocks [GetNotificationDetailUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetNotificationDetailUseCase extends _i1.Mock
-    implements _i46.GetNotificationDetailUseCase {
+    implements _i47.GetNotificationDetailUseCase {
   MockGetNotificationDetailUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i19.NotificationDetailEntity>> execute(
+  _i13.Future<_i2.Either<_i14.Failure, _i20.NotificationDetailEntity>> execute(
           String? notificationId) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1114,8 +1105,8 @@ class MockGetNotificationDetailUseCase extends _i1.Mock
           [notificationId],
         ),
         returnValue: _i13.Future<
-                _i2.Either<_i14.Failure, _i19.NotificationDetailEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i19.NotificationDetailEntity>(
+                _i2.Either<_i14.Failure, _i20.NotificationDetailEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i20.NotificationDetailEntity>(
           this,
           Invocation.method(
             #execute,
@@ -1123,20 +1114,20 @@ class MockGetNotificationDetailUseCase extends _i1.Mock
           ),
         )),
       ) as _i13
-          .Future<_i2.Either<_i14.Failure, _i19.NotificationDetailEntity>>);
+          .Future<_i2.Either<_i14.Failure, _i20.NotificationDetailEntity>>);
 }
 
 /// A class which mocks [GetTransactionsUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTransactionsUseCase extends _i1.Mock
-    implements _i47.GetTransactionsUseCase {
+    implements _i48.GetTransactionsUseCase {
   MockGetTransactionsUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i21.TransactionsDataEntity>> execute(
+  _i13.Future<_i2.Either<_i14.Failure, _i22.TransactionsDataEntity>> execute(
           int? page) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1144,28 +1135,28 @@ class MockGetTransactionsUseCase extends _i1.Mock
           [page],
         ),
         returnValue: _i13.Future<
-                _i2.Either<_i14.Failure, _i21.TransactionsDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i21.TransactionsDataEntity>(
+                _i2.Either<_i14.Failure, _i22.TransactionsDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i22.TransactionsDataEntity>(
           this,
           Invocation.method(
             #execute,
             [page],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i21.TransactionsDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i22.TransactionsDataEntity>>);
 }
 
 /// A class which mocks [GetTransactionDetailUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTransactionDetailUseCase extends _i1.Mock
-    implements _i48.GetTransactionDetailUseCase {
+    implements _i49.GetTransactionDetailUseCase {
   MockGetTransactionDetailUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i22.TransactionDetailEntity>> execute(
+  _i13.Future<_i2.Either<_i14.Failure, _i23.TransactionDetailEntity>> execute(
           String? transactionId) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1173,58 +1164,58 @@ class MockGetTransactionDetailUseCase extends _i1.Mock
           [transactionId],
         ),
         returnValue: _i13.Future<
-                _i2.Either<_i14.Failure, _i22.TransactionDetailEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i22.TransactionDetailEntity>(
+                _i2.Either<_i14.Failure, _i23.TransactionDetailEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i23.TransactionDetailEntity>(
           this,
           Invocation.method(
             #execute,
             [transactionId],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i22.TransactionDetailEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i23.TransactionDetailEntity>>);
 }
 
 /// A class which mocks [TransferConfirmUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferConfirmUseCase extends _i1.Mock
-    implements _i49.TransferConfirmUseCase {
+    implements _i50.TransferConfirmUseCase {
   MockTransferConfirmUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i24.TransferDataEntity>> execute(
-          _i25.TransferRequestEntity? transferRequest) =>
+  _i13.Future<_i2.Either<_i14.Failure, _i25.TransferDataEntity>> execute(
+          _i26.TransferRequestEntity? transferRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #execute,
           [transferRequest],
         ),
         returnValue: _i13
-            .Future<_i2.Either<_i14.Failure, _i24.TransferDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i24.TransferDataEntity>(
+            .Future<_i2.Either<_i14.Failure, _i25.TransferDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i25.TransferDataEntity>(
           this,
           Invocation.method(
             #execute,
             [transferRequest],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i24.TransferDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i25.TransferDataEntity>>);
 }
 
 /// A class which mocks [TransferCompleteUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTransferCompleteUseCase extends _i1.Mock
-    implements _i50.TransferCompleteUseCase {
+    implements _i51.TransferCompleteUseCase {
   MockTransferCompleteUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i13.Future<_i2.Either<_i14.Failure, String>> execute(
-          _i25.TransferRequestEntity? transferRequest) =>
+          _i26.TransferRequestEntity? transferRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #execute,
@@ -1244,13 +1235,13 @@ class MockTransferCompleteUseCase extends _i1.Mock
 /// A class which mocks [ScanQrCodeUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockScanQrCodeUseCase extends _i1.Mock implements _i51.ScanQrCodeUseCase {
+class MockScanQrCodeUseCase extends _i1.Mock implements _i52.ScanQrCodeUseCase {
   MockScanQrCodeUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>> execute(
+  _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayFormDataEntity>> execute(
           String? toPhone) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1258,57 +1249,57 @@ class MockScanQrCodeUseCase extends _i1.Mock implements _i51.ScanQrCodeUseCase {
           [toPhone],
         ),
         returnValue: _i13
-            .Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>>.value(
-            _FakeEither_0<_i14.Failure, _i27.ScanPayFormDataEntity>(
+            .Future<_i2.Either<_i14.Failure, _i28.ScanPayFormDataEntity>>.value(
+            _FakeEither_0<_i14.Failure, _i28.ScanPayFormDataEntity>(
           this,
           Invocation.method(
             #execute,
             [toPhone],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i27.ScanPayFormDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayFormDataEntity>>);
 }
 
 /// A class which mocks [PayConfirmUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockPayConfirmUseCase extends _i1.Mock implements _i52.PayConfirmUseCase {
+class MockPayConfirmUseCase extends _i1.Mock implements _i53.PayConfirmUseCase {
   MockPayConfirmUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>> execute(
-          _i29.ScanPayRequestEntity? scanPayRequestEntity) =>
+  _i13.Future<_i2.Either<_i14.Failure, _i29.ScanPayDataEntity>> execute(
+          _i30.ScanPayRequestEntity? scanPayRequestEntity) =>
       (super.noSuchMethod(
         Invocation.method(
           #execute,
           [scanPayRequestEntity],
         ),
         returnValue:
-            _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>>.value(
-                _FakeEither_0<_i14.Failure, _i28.ScanPayDataEntity>(
+            _i13.Future<_i2.Either<_i14.Failure, _i29.ScanPayDataEntity>>.value(
+                _FakeEither_0<_i14.Failure, _i29.ScanPayDataEntity>(
           this,
           Invocation.method(
             #execute,
             [scanPayRequestEntity],
           ),
         )),
-      ) as _i13.Future<_i2.Either<_i14.Failure, _i28.ScanPayDataEntity>>);
+      ) as _i13.Future<_i2.Either<_i14.Failure, _i29.ScanPayDataEntity>>);
 }
 
 /// A class which mocks [PayCompleteUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockPayCompleteUseCase extends _i1.Mock
-    implements _i53.PayCompleteUseCase {
+    implements _i54.PayCompleteUseCase {
   MockPayCompleteUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i13.Future<_i2.Either<_i14.Failure, String>> execute(
-          _i29.ScanPayRequestEntity? scanPayRequestEntity) =>
+          _i30.ScanPayRequestEntity? scanPayRequestEntity) =>
       (super.noSuchMethod(
         Invocation.method(
           #execute,
@@ -1328,7 +1319,7 @@ class MockPayCompleteUseCase extends _i1.Mock
 /// A class which mocks [SharedPreferences].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedPreferences extends _i1.Mock implements _i54.SharedPreferences {
+class MockSharedPreferences extends _i1.Mock implements _i55.SharedPreferences {
   MockSharedPreferences() {
     _i1.throwOnMissingStub(this);
   }

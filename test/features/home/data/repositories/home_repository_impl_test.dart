@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/error/exception.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
+import 'package:magic_pay_app/features/home/data/models/profile_model.dart';
 import 'package:magic_pay_app/features/home/data/repositories/home_repository_impl.dart';
 import 'package:mockito/mockito.dart';
 
@@ -19,10 +19,15 @@ void main() {
     homeRepositoryImpl = HomeRepositoryImpl(mockHomeRemoteDataSource);
   });
 
-  const testReponseData = ResponseData(
-    result: true,
-    message: 'success',
-    data: 'data',
+  const testProfileModel = ProfileModel(
+    name: "Tester",
+    email: "tester@gmail.com",
+    phone: "123456",
+    accountNumber: "876872478236478234",
+    balance: "300000",
+    profile: "profile image",
+    receiveQrValue: "123456",
+    unreadNotiCount: 0,
   );
 
   const oldPassword = 'password-old';
@@ -34,13 +39,13 @@ void main() {
       () async {
         // arrange
         when(mockHomeRemoteDataSource.getProfile())
-            .thenAnswer((_) async => testReponseData);
+            .thenAnswer((_) async => testProfileModel);
 
         // act
         final result = await homeRepositoryImpl.getProfile();
 
         // assert
-        expect(result, equals(const Right(testReponseData)));
+        expect(result, equals(const Right(testProfileModel)));
       },
     );
 
@@ -86,14 +91,14 @@ void main() {
         // arrange
         when(mockHomeRemoteDataSource.updatePassword(
                 oldPassword: oldPassword, newPassword: newPassword))
-            .thenAnswer((_) async => testReponseData);
+            .thenAnswer((_) async => null);
 
         // act
         final result = await homeRepositoryImpl.updatePassword(
             oldPassword: oldPassword, newPassword: newPassword);
 
         // assert
-        expect(result, equals(const Right(testReponseData)));
+        expect(result, equals(const Right(null)));
       },
     );
 

@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:magic_pay_app/features/home/domain/entities/Profile.dart';
 import 'package:magic_pay_app/features/home/domain/usecases/get_profile.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_event.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_state.dart';
@@ -12,8 +11,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       result.fold((failure) {
         emit(ProfileLoadFailed(failure.message));
       }, (data) {
-        final profile = ProfileEntity.fromJson(data.data);
-        emit(ProfileLoaded(profile));
+        emit(ProfileLoaded(data));
       });
     });
   }

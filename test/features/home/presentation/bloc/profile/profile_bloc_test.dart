@@ -2,7 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:magic_pay_app/core/error/failure.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/home/domain/entities/Profile.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_event.dart';
@@ -20,21 +19,15 @@ void main() {
     profileBloc = ProfileBloc(mockGetProfileUseCase);
   });
 
-  const profileDataJson = {
-    "name": 'Tester',
-    "email": 'tester@gmail.com',
-    "phone": '123456',
-    "account_number": '1223548799654',
-    "balance": '3000000',
-    'profile': 'profile-image',
-    "receive_qr_value": '123456',
-    'unread_noti_count': 0,
-  };
-
-  const testResponseData = ResponseData(
-    result: true,
-    message: 'success',
-    data: profileDataJson,
+  const profileEntity = ProfileEntity(
+    name: "Tester",
+    email: "tester@gmail.com",
+    phone: "123456",
+    accountNumber: "876872478236478234",
+    balance: "300000",
+    profile: "profile image",
+    receiveQrValue: "123456",
+    unreadNotiCount: 0,
   );
 
   test('initial state should be loading', () {
@@ -46,12 +39,12 @@ void main() {
       'should emit [ProfiileLoaded] when data is gotten successfully.',
       build: () {
         when(mockGetProfileUseCase.execute())
-            .thenAnswer((_) async => const Right(testResponseData));
+            .thenAnswer((_) async => const Right(profileEntity));
         return profileBloc;
       },
       act: (bloc) => bloc.add(const GetProfile()),
       expect: () => [
-        ProfileLoaded(ProfileEntity.fromJson(profileDataJson)),
+        const ProfileLoaded(profileEntity),
       ],
     );
 

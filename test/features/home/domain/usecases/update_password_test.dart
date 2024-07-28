@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:magic_pay_app/core/response_data.dart';
 import 'package:magic_pay_app/features/home/domain/usecases/update_password.dart';
 import 'package:mockito/mockito.dart';
 
@@ -14,13 +13,6 @@ void main() {
     mockHomeRepository = MockHomeRepository();
     updatePasswordUseCase = UpdatePasswordUseCase(mockHomeRepository);
   });
-
-  const testResponseData = ResponseData(
-    result: true,
-    message: 'success',
-    data: null,
-  );
-
   const oldPassword = '0987654321';
   const newPassword = '1234567890';
 
@@ -28,13 +20,13 @@ void main() {
     // arrange
     when(mockHomeRepository.updatePassword(
             oldPassword: oldPassword, newPassword: newPassword))
-        .thenAnswer((_) async => const Right(testResponseData));
+        .thenAnswer((_) async => const Right(null));
 
     // act
     final result = await updatePasswordUseCase.execute(
         oldPassword: oldPassword, newPassword: newPassword);
 
     // assert
-    expect(result, const Right(testResponseData));
+    expect(result, const Right(null));
   });
 }

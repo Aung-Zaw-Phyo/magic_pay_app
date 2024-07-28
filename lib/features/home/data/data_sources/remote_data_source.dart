@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:magic_pay_app/core/constants/constants.dart';
 import 'package:magic_pay_app/core/error/exception.dart';
 import 'package:magic_pay_app/core/helper.dart';
-import 'package:magic_pay_app/core/response_data.dart';
+import 'package:magic_pay_app/features/home/data/models/profile_model.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<ResponseData> getProfile();
+  Future<ProfileModel> getProfile();
 
-  Future<ResponseData> updatePassword({
+  Future<Null> updatePassword({
     required String oldPassword,
     required String newPassword,
   });
@@ -18,20 +18,20 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   HomeRemoteDataSourceImpl(this._dio);
 
   @override
-  Future<ResponseData> getProfile() async {
+  Future<ProfileModel> getProfile() async {
     final prefs = await sharedPrefs();
     final token = prefs.getString('token');
     _dio.options.headers['Authorization'] = 'Bearer $token';
     final response = await _dio.get('$baseUrl/profile');
     if (response.statusCode == 200) {
-      return ResponseData.fromJson(response.data);
+      return ProfileModel.fromJson(response.data['data']);
     } else {
       throw ServerException(response.data['message'] ?? 'Something wrong!');
     }
   }
 
   @override
-  Future<ResponseData> updatePassword(
+  Future<Null> updatePassword(
       {required String oldPassword, required String newPassword}) async {
     final prefs = await sharedPrefs();
     final token = prefs.getString('token');
@@ -41,7 +41,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       data: {'old_password': oldPassword, 'new_password': newPassword},
     );
     if (response.statusCode == 200) {
-      return ResponseData.fromJson(response.data);
+      return;
     } else {
       throw ServerException(response.data['message'] ?? 'Something wrong!');
     }
