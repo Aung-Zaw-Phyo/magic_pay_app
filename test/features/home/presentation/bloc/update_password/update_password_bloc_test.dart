@@ -37,6 +37,7 @@ void main() {
       act: (bloc) => bloc.add(const UpdatePassword(
           oldPassword: oldPassword, newPassword: newPassword)),
       expect: () => [
+        UpdatePasswordLoading(),
         UpdatePasswordLoaded(),
       ],
     );
@@ -55,6 +56,7 @@ void main() {
       act: (bloc) => bloc.add(const UpdatePassword(
           oldPassword: oldPassword, newPassword: newPassword)),
       expect: () => [
+        UpdatePasswordLoading(),
         const UpdatePasswordLoadFailed("Server failure."),
       ],
     );

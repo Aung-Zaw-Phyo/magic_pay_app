@@ -9,6 +9,7 @@ class UpdatePasswordBloc
   UpdatePasswordBloc(this.updatePasswordUseCase)
       : super(UpdatePasswordInitial()) {
     on<UpdatePassword>((event, emit) async {
+      emit(UpdatePasswordLoading());
       final result = await updatePasswordUseCase.execute(
         oldPassword: event.oldPassword,
         newPassword: event.newPassword,

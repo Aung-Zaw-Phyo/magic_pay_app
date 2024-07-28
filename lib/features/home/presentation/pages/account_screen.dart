@@ -3,9 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_bloc.dart';
 import 'package:magic_pay_app/features/home/presentation/bloc/profile/profile_state.dart';
 import 'package:magic_pay_app/features/home/presentation/widgets/logout_action.dart';
+import 'package:magic_pay_app/features/home/presentation/widgets/update_password_modal.dart';
+import 'package:magic_pay_app/features/home/presentation/widgets/user_info_item.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
+
+  void _updatePassword(BuildContext context) {
+    showModalBottomSheet(
+      useSafeArea: true,
+      isScrollControlled: true,
+      context: context,
+      constraints: const BoxConstraints(minWidth: double.infinity),
+      builder: (ctx) => const UpdatePasswordModal(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,63 +47,24 @@ class AccountScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Username',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                        ),
-                        const Spacer(),
-                        Text(
-                          'Aung Zaw Phyo',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                        ),
-                      ],
-                    ),
+                    UserInfoItem(
+                        label: 'Username', value: state.profileEntity.name),
                     Container(
                       width: double.infinity,
                       height: 1,
                       margin: const EdgeInsets.symmetric(vertical: 13),
                       color: const Color.fromARGB(48, 0, 0, 0),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Email',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                        ),
-                        const Spacer(),
-                        Text(
-                          'aungzawphyo1102@gmail.com',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                        ),
-                      ],
-                    ),
+                    UserInfoItem(
+                        label: 'Email', value: state.profileEntity.email),
                     Container(
                       width: double.infinity,
                       height: 1,
                       margin: const EdgeInsets.symmetric(vertical: 13),
                       color: const Color.fromARGB(48, 0, 0, 0),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Phone',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                        ),
-                        const Spacer(),
-                        Text(
-                          '09968548024',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(),
-                        ),
-                      ],
-                    )
+                    UserInfoItem(
+                        label: 'Phone', value: state.profileEntity.phone),
                   ],
                 ),
               ),
@@ -106,7 +79,9 @@ class AccountScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        _updatePassword(context);
+                      },
                       leading: const Icon(Icons.password),
                       title: const Text('Update Password'),
                       trailing: const Icon(
