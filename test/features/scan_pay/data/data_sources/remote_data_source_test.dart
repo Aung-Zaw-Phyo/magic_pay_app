@@ -87,7 +87,7 @@ void main() {
           requestOptions:
               dio.RequestOptions(path: '$baseUrl/scan-and-pay-form'),
         );
-        when(mockDio.post('$baseUrl/scan-and-pay-form',
+        when(mockDio.get('$baseUrl/scan-and-pay-form',
             data: {"to_phone": toPhone})).thenAnswer((_) async => mockResponse);
 
         final result = await scanPayRemoteDataSourceImpl.scanQrCode(toPhone);
@@ -115,7 +115,7 @@ void main() {
           requestOptions:
               dio.RequestOptions(path: '$baseUrl/scan-and-pay-form'),
         );
-        when(mockDio.post('$baseUrl/scan-and-pay-form',
+        when(mockDio.get('$baseUrl/scan-and-pay-form',
             data: {"to_phone": toPhone})).thenAnswer((_) async => mockResponse);
 
         final result = scanPayRemoteDataSourceImpl.scanQrCode(toPhone);
